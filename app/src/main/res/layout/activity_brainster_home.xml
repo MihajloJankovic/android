@@ -121,20 +121,98 @@
                         android:layout_height="20dp"
                         android:layout_marginVertical="8dp"
                         android:max="100"
-                        android:progress="69"
+                        android:progress="42"
                         android:progressDrawable="@drawable/progress_bar"></ProgressBar>
                 </RelativeLayout>
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/mainMiddleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:layout_marginBottom="150dp"
         android:layout_marginTop="75dp">
+
+        <LinearLayout
+            android:id="@+id/mainLeftSideVertical"
+            android:layout_width="73dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:id="@+id/mainLeftSideButtonsBox"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginHorizontal="15dp"
+                android:orientation="vertical"
+                >
+
+                <RelativeLayout
+                    android:id="@+id/notification_belly_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="20dp"
+                    android:clickable="true"
+                    tools:ignore="TouchTargetSizeCheck">
+
+                    <RelativeLayout
+                        android:id="@+id/notification_belly"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/click_bell"
+                        android:gravity="right">
+
+                        <RelativeLayout
+                            android:id="@+id/notifications_quantity_layout"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:background="@drawable/notifications_quantity_back">
+
+                            <TextView
+                                android:id="@+id/notifications_quantity"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginEnd="2dp"
+                                android:layout_marginBottom="2dp"
+                                android:fontFamily="@font/quiz_font"
+                                android:text="99"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="12dp"
+                                tools:ignore="TextSizeCheck"></TextView>
+
+
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rang_list_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:clickable="true"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck">
+
+                    <RelativeLayout
+                        android:id="@+id/rang_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/click_rang_list"
+                        android:gravity="right"></RelativeLayout>
+
+                </RelativeLayout>
+
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+
         <LinearLayout
             android:id="@+id/mainVertical"
             android:layout_width="match_parent"
@@ -155,7 +233,8 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/BottomContainerLayout"
@@ -186,7 +265,7 @@
 
                 <LinearLayout
                     android:id="@+id/FriendsContainer"
-                    android:layout_width="297dp"
+                    android:layout_width="300dp"
                     android:layout_height="match_parent"
                     android:layout_marginVertical="4dp"
                     android:background="#75FFFFFF">
@@ -207,95 +286,198 @@
                             android:rotationX="180"
                             >
 
-                            <androidx.cardview.widget.CardView
-                                android:id="@+id/FriendCard1"
+                            <LinearLayout
+                                android:id="@+id/FriendCard"
                                 android:layout_marginRight="2dp"
                                 android:layout_width="70dp"
+                                android:orientation="vertical"
+                                android:background="@drawable/rating_border_gradient"
                                 android:layout_height="match_parent"
-                                app:cardBackgroundColor="#83E40F0F"
-                                app:cardCornerRadius="4dp"
-                                app:cardElevation="0dp">
-                            </androidx.cardview.widget.CardView>
+                                android:rotationX="180">
 
-                            <androidx.cardview.widget.CardView
+                                <LinearLayout
+                                    android:id="@+id/FriendPicLayout1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="65dp"
+                                    android:layout_marginHorizontal="3dp"
+                                    android:layout_marginTop="3dp"
+                                    android:background="@drawable/random_person"
+                                    android:orientation="horizontal">
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/FriendNameLayout1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="27dp"
+                                    android:layout_marginHorizontal="3dp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/FriendName1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:fontFamily="@font/quiz_font"
+                                        android:text="Petar"
+                                        android:textAlignment="center"
+                                        android:textColor="#517EEF">
+
+                                    </TextView>
+                                </LinearLayout>
+                            </LinearLayout>
+                            <LinearLayout
                                 android:id="@+id/FriendCard2"
                                 android:layout_marginRight="2dp"
                                 android:layout_width="70dp"
+                                android:orientation="vertical"
+                                android:background="@drawable/rating_border_gradient"
                                 android:layout_height="match_parent"
-                                app:cardBackgroundColor="#AEE40F0F"
-                                app:cardCornerRadius="4dp"
-                                app:cardElevation="0dp">
-                            </androidx.cardview.widget.CardView>
+                                android:rotationX="180">
 
-                            <androidx.cardview.widget.CardView
+                                <LinearLayout
+                                    android:id="@+id/FriendPicLayout2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="65dp"
+                                    android:layout_marginHorizontal="3dp"
+                                    android:layout_marginTop="3dp"
+                                    android:background="@drawable/random_person"
+                                    android:orientation="horizontal">
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/FriendNameLayout2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="27dp"
+                                    android:layout_marginHorizontal="3dp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/FriendName2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:fontFamily="@font/quiz_font"
+                                        android:text="Petar"
+                                        android:textAlignment="center"
+                                        android:textColor="#517EEF">
+
+                                    </TextView>
+                                </LinearLayout>
+                            </LinearLayout>
+                            <LinearLayout
                                 android:id="@+id/FriendCard3"
                                 android:layout_marginRight="2dp"
                                 android:layout_width="70dp"
+                                android:orientation="vertical"
+                                android:background="@drawable/rating_border_gradient"
                                 android:layout_height="match_parent"
-                                app:cardBackgroundColor="#54E40F0F"
-                                app:cardCornerRadius="4dp"
-                                app:cardElevation="0dp">
-                            </androidx.cardview.widget.CardView>
+                                android:rotationX="180">
 
-                            <androidx.cardview.widget.CardView
+                                <LinearLayout
+                                    android:id="@+id/FriendPicLayout3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="65dp"
+                                    android:layout_marginHorizontal="3dp"
+                                    android:layout_marginTop="3dp"
+                                    android:background="@drawable/random_person"
+                                    android:orientation="horizontal">
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/FriendNameLayout3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="27dp"
+                                    android:layout_marginHorizontal="3dp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/FriendName3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:fontFamily="@font/quiz_font"
+                                        android:text="Petar"
+                                        android:textAlignment="center"
+                                        android:textColor="#517EEF">
+
+                                    </TextView>
+                                </LinearLayout>
+                            </LinearLayout>
+                            <LinearLayout
                                 android:id="@+id/FriendCard4"
                                 android:layout_marginRight="2dp"
                                 android:layout_width="70dp"
+                                android:orientation="vertical"
+                                android:background="@drawable/rating_border_gradient"
                                 android:layout_height="match_parent"
-                                app:cardBackgroundColor="#60E40F0F"
-                                app:cardCornerRadius="4dp"
-                                app:cardElevation="0dp">
-                            </androidx.cardview.widget.CardView>
+                                android:rotationX="180">
 
-                            <androidx.cardview.widget.CardView
-                                android:id="@+id/FriendCard5"
-                                android:layout_marginRight="2dp"
-                                android:layout_width="70dp"
-                                android:layout_height="match_parent"
-                                app:cardBackgroundColor="#2AE40F0F"
-                                app:cardCornerRadius="4dp"
-                                app:cardElevation="0dp">
-                            </androidx.cardview.widget.CardView>
+                                <LinearLayout
+                                    android:id="@+id/FriendPicLayout4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="65dp"
+                                    android:layout_marginHorizontal="3dp"
+                                    android:layout_marginTop="3dp"
+                                    android:background="@drawable/random_person"
+                                    android:orientation="horizontal">
+                                </LinearLayout>
 
-                            <androidx.cardview.widget.CardView
-                                android:id="@+id/FriendCard6"
-                                android:layout_marginRight="2dp"
-                                android:layout_width="70dp"
-                                android:layout_height="match_parent"
-                                app:cardBackgroundColor="#83E40F0F"
-                                app:cardCornerRadius="4dp"
-                                app:cardElevation="0dp">
-                            </androidx.cardview.widget.CardView>
+                                <LinearLayout
+                                    android:id="@+id/FriendNameLayout4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="27dp"
+                                    android:layout_marginHorizontal="3dp"
+                                    android:orientation="horizontal">
 
-                            <androidx.cardview.widget.CardView
+                                    <TextView
+                                        android:id="@+id/FriendName6"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:fontFamily="@font/quiz_font"
+                                        android:text="Petar"
+                                        android:textAlignment="center"
+                                        android:textColor="#517EEF">
+
+                                    </TextView>
+                                </LinearLayout>
+                            </LinearLayout>
+                            <LinearLayout
                                 android:id="@+id/FriendCard7"
                                 android:layout_marginRight="2dp"
                                 android:layout_width="70dp"
+                                android:orientation="vertical"
+                                android:background="@drawable/rating_border_gradient"
                                 android:layout_height="match_parent"
-                                app:cardBackgroundColor="#83E40F0F"
-                                app:cardCornerRadius="4dp"
-                                app:cardElevation="0dp">
-                            </androidx.cardview.widget.CardView>
+                                android:rotationX="180">
 
-                            <androidx.cardview.widget.CardView
-                                android:id="@+id/FriendCard8"
-                                android:layout_marginRight="2dp"
-                                android:layout_width="70dp"
-                                android:layout_height="match_parent"
-                                app:cardBackgroundColor="#83E40F0F"
-                                app:cardCornerRadius="4dp"
-                                app:cardElevation="0dp">
-                            </androidx.cardview.widget.CardView>
+                                <LinearLayout
+                                    android:id="@+id/FriendPicLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="65dp"
+                                    android:layout_marginHorizontal="3dp"
+                                    android:layout_marginTop="3dp"
+                                    android:background="@drawable/random_person"
+                                    android:orientation="horizontal">
+                                </LinearLayout>
 
-                            <androidx.cardview.widget.CardView
-                                android:id="@+id/FriendCard9"
-                                android:layout_marginRight="2dp"
-                                android:layout_width="70dp"
-                                android:layout_height="match_parent"
-                                app:cardBackgroundColor="#83E40F0F"
-                                app:cardCornerRadius="4dp"
-                                app:cardElevation="0dp">
-                            </androidx.cardview.widget.CardView>
+                                <LinearLayout
+                                    android:id="@+id/FriendNameLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="27dp"
+                                    android:layout_marginHorizontal="3dp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/FriendName"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:fontFamily="@font/quiz_font"
+                                        android:text="Petar"
+                                        android:textAlignment="center"
+                                        android:textColor="#517EEF">
+
+                                    </TextView>
+                                </LinearLayout>
+                            </LinearLayout>
+
+
 
                         </LinearLayout>
 
@@ -308,19 +490,46 @@
                 <RelativeLayout
                     android:id="@+id/AddFriendContainer"
                     android:layout_width="90dp"
+                    android:orientation="vertical"
                     android:layout_height="match_parent"
                     android:layout_gravity="end"
-                    android:background="@drawable/upper_75">
+                    android:clickable="true"
+                    android:background="@drawable/add_friend_click">
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/AddFriendContainerCard"
+                    <RelativeLayout
+                        android:id="@+id/AddFriendSignLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:cardBackgroundColor="#00E40F0F"
-                        app:cardCornerRadius="4dp"
-                        app:cardElevation="0dp">
-                    </androidx.cardview.widget.CardView>
+                        android:layout_marginTop="6dp"
+                        android:layout_height="65dp">
+                        <ImageView
+                            android:id="@+id/AddFriendSign"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/plus_fixed"
+                            android:layout_marginHorizontal="17dp"
+                            android:layout_marginVertical="5dp">
 
+                        </ImageView>
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/AddFriendTextLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_alignParentBottom="true">
+                        <TextView
+                            android:id="@+id/AddFriendText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Add friend"
+                            android:layout_marginVertical="8dp"
+                            android:layout_marginHorizontal="5dp"
+                            android:fontFamily="@font/quiz_font"
+                            android:textColor="#1fd3ed"
+                            android:textAlignment="center"
+                            android:textSize="16dp">
+                        </TextView>
+                    </LinearLayout>
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
