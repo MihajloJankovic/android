@@ -51,14 +51,14 @@
                 tools:layout_editor_absoluteY="0dp">
 
                 <ImageButton
-                    android:id="@+id/logoutButton"
+                    android:id="@+id/loginPopUpButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_margin="12dp"
                     android:background="@drawable/click_profile"
-                    android:contentDescription="@string/app_name">
-                </ImageButton>
+                    android:clickable="true"
+                    android:onClick="openLogin"></ImageButton>
 
             </androidx.cardview.widget.CardView>
 
