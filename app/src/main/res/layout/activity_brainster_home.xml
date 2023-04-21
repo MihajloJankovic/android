@@ -54,6 +54,8 @@
                     android:id="@+id/logoutButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:onClick="logout"
                     android:layout_margin="12dp"
                     android:background="@drawable/click_logout"
                     android:contentDescription="@string/app_name">

@@ -53,22 +53,11 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/quiz_font"
                 android:textColor="#046AB8"
-                android:text="Sign in to your account"
+                android:text="Create an account!"
                 android:textAlignment="center"
                 android:textSize="25dp"></TextView>
 
-            <RelativeLayout
-                android:id="@+id/popUpAvatarLayout"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="center">
 
-                <RelativeLayout
-                    android:id="@+id/popUpAvatar"
-                    android:layout_width="150dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/brainster_logo"></RelativeLayout>
-            </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/formLayout"
@@ -76,6 +65,35 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
                 android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/emailLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="5dp">
+
+                    <TextView
+                        android:id="@+id/emailLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/quiz_font"
+                        android:textColor="#046AB8"
+                        android:text="Email address"
+                        android:textSize="17dp">
+                    </TextView>
+
+                    <EditText
+                        android:id="@+id/emailTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/text_box"
+                        android:hint="Enter email address"
+                        android:textColor="@color/black"
+                        android:paddingLeft="7dp"
+                        android:textColorHint="#A5A5A5"
+                        tools:ignore="TouchTargetSizeCheck"></EditText>
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/usernameLayout"
@@ -90,7 +108,7 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/quiz_font"
                         android:textColor="#046AB8"
-                        android:text="Email address or username"
+                        android:text="Username"
                         android:textSize="17dp">
                     </TextView>
 
@@ -99,7 +117,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:background="@drawable/text_box"
-                        android:hint="Enter username or email"
+                        android:hint="Enter username"
                         android:textColor="@color/black"
                         android:paddingLeft="7dp"
                         android:textColorHint="#A5A5A5"
@@ -110,7 +128,8 @@
                     android:id="@+id/passwordLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginBottom="5dp">
 
                     <TextView
                         android:id="@+id/passwordLabel"
@@ -128,6 +147,37 @@
                         android:layout_height="40dp"
                         android:background="@drawable/text_box"
                         android:hint="Enter password"
+                        android:textColor="@color/black"
+                        android:paddingLeft="7dp"
+                        android:textColorHint="#A5A5A5"
+                        android:inputType="textPassword"
+                        tools:ignore="TouchTargetSizeCheck"></EditText>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/confirmPasswordLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="5dp">
+
+                    <TextView
+                        android:id="@+id/confirmPasswordLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/quiz_font"
+                        android:textColor="#046AB8"
+                        android:text="Confirm password"
+                        android:textSize="17dp">
+                    </TextView>
+
+                    <EditText
+                        android:id="@+id/confirmPasswordTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/text_box"
+                        android:hint="Confirm password"
                         android:textColor="@color/black"
                         android:paddingLeft="7dp"
                         android:textColorHint="#A5A5A5"
@@ -160,17 +210,15 @@
                     android:background="@drawable/click_start_button">
 
                     <Button
+                        android:id="@+id/signUpButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/loginButton"
                         android:background="#00000000"
-                        android:fontFamily="@font/quiz_font"
-                        android:text="Log in"
-                        android:textColor="@color/white"
-                        android:textSize="25dp"
                         android:clickable="true"
-                        android:onClick="loginCheck">
-                    </Button>
+                        android:fontFamily="@font/quiz_font"
+                        android:text="Sign Up"
+                        android:textColor="@color/white"
+                        android:textSize="25dp"></Button>
                 </RelativeLayout>
             </LinearLayout>
 
@@ -190,23 +238,23 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/quiz_font"
                 android:textColor="#046AB8"
-                android:text="Haven't an account?"
+                android:text="Have an account?"
                 android:textSize="18dp"></TextView>
 
             <RelativeLayout
-                android:id="@+id/signUpLayout"
+                android:id="@+id/signInLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:gravity="end">
 
                 <TextView
-                    android:id="@+id/signUp"
+                    android:id="@+id/signIn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/quiz_font"
                     android:textColor="@color/purple_700"
-                    android:text="Sign Up!"
+                    android:text="Sign in!"
                     android:linksClickable="true"
                     android:textSize="18dp"></TextView>
             </RelativeLayout>
