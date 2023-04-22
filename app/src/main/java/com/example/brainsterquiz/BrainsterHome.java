@@ -3,6 +3,7 @@ package com.example.brainsterquiz;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,7 +28,7 @@ public class BrainsterHome extends AppCompatActivity {
             }
         });
     }
-    private void logout(View view) {
+    public void logout(View view) {
         startActivity(new Intent(BrainsterHome.this, BrainsterHomeUnregistered.class));
     }
 }

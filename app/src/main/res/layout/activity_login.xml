@@ -4,24 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:theme="@android:style/Theme.Dialog"
     >
 
     <LinearLayout
         android:id="@+id/popUpLayout"
         android:layout_width="350dp"
         android:layout_height="540dp"
+        android:layout_gravity="center"
         android:background="@drawable/rating_border_no_stroke"
-        android:orientation="vertical"
-        android:layout_gravity="center">
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/upperBarLayout"
-            android:layout_marginTop="7dp"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginHorizontal="7dp"
-            android:orientation="horizontal"
-            android:gravity="end">
+            android:layout_marginTop="7dp"
+            android:gravity="end"
+            android:orientation="horizontal">
 
             <RelativeLayout
                 android:id="@+id/closeButtonLayout"
@@ -29,22 +31,30 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/close_button_clicked">
 
-                <ImageView
+                <RelativeLayout
                     android:id="@+id/closeButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/close_button">
-                </ImageView>
+                    android:clickable="true"
+                    android:background="@drawable/close_button_clicked">
+                    <ImageView
+                        android:id="@+id/closeButtonLogo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/close_button">
+                    </ImageView>
+                </RelativeLayout>
 
             </RelativeLayout>
 
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/popUpLayoutMiddle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
             <TextView
@@ -52,9 +62,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/quiz_font"
-                android:textColor="#046AB8"
                 android:text="Sign in to your account"
                 android:textAlignment="center"
+                android:textColor="#046AB8"
                 android:textSize="25dp"></TextView>
 
             <RelativeLayout
@@ -81,18 +91,17 @@
                     android:id="@+id/usernameLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginBottom="5dp">
+                    android:layout_marginBottom="5dp"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/usernameLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/quiz_font"
-                        android:textColor="#046AB8"
                         android:text="Email address or username"
-                        android:textSize="17dp">
-                    </TextView>
+                        android:textColor="#046AB8"
+                        android:textSize="17dp"></TextView>
 
                     <EditText
                         android:id="@+id/usernameTxt"
@@ -100,8 +109,8 @@
                         android:layout_height="40dp"
                         android:background="@drawable/text_box"
                         android:hint="Enter username or email"
-                        android:textColor="@color/black"
                         android:paddingLeft="7dp"
+                        android:textColor="@color/black"
                         android:textColorHint="#A5A5A5"
                         tools:ignore="TouchTargetSizeCheck"></EditText>
                 </LinearLayout>
@@ -117,10 +126,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/quiz_font"
-                        android:textColor="#046AB8"
                         android:text="Password"
-                        android:textSize="17dp">
-                    </TextView>
+                        android:textColor="#046AB8"
+                        android:textSize="17dp"></TextView>
 
                     <EditText
                         android:id="@+id/passwordTxt"
@@ -128,10 +136,10 @@
                         android:layout_height="40dp"
                         android:background="@drawable/text_box"
                         android:hint="Enter password"
-                        android:textColor="@color/black"
-                        android:paddingLeft="7dp"
-                        android:textColorHint="#A5A5A5"
                         android:inputType="textPassword"
+                        android:paddingLeft="7dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="#A5A5A5"
                         tools:ignore="TouchTargetSizeCheck"></EditText>
 
                 </LinearLayout>
@@ -140,13 +148,14 @@
 
 
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/popUpLayoutMiddleLower"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:id="@+id/loginButtonLayout"
@@ -165,8 +174,8 @@
                         android:layout_height="match_parent"
                         android:background="#00000000"
                         android:clickable="true"
-                        android:onClick="validateParametersView"
                         android:fontFamily="@font/quiz_font"
+                        android:onClick="login"
                         android:text="Log in"
                         android:textColor="@color/white"
                         android:textSize="25dp" />
@@ -188,8 +197,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/quiz_font"
-                android:textColor="#046AB8"
                 android:text="Haven't an account?"
+                android:textColor="#046AB8"
                 android:textSize="18dp"></TextView>
 
             <RelativeLayout
@@ -204,9 +213,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/quiz_font"
-                    android:textColor="@color/purple_700"
-                    android:text="Sign Up!"
                     android:linksClickable="true"
+                    android:text="Sign Up!"
+                    android:clickable="true"
+                    android:textColor="@color/purple_700"
                     android:textSize="18dp"></TextView>
             </RelativeLayout>
 
