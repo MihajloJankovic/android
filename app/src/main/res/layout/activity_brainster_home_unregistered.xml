@@ -58,7 +58,7 @@
                     android:layout_margin="12dp"
                     android:background="@drawable/click_profile"
                     android:clickable="true"
-                    android:onClick="openLogin"></ImageButton>
+                    android:onClick="loginAndRegisterDialog"></ImageButton>
 
             </androidx.cardview.widget.CardView>
 

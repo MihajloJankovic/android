@@ -24,7 +24,12 @@ import com.google.android.material.button.MaterialButton;
 public class BrainsterHomeUnregistered extends AppCompatActivity {
     Dialog loginDialog;
     Dialog registerDialog;
-    ImageButton openLogin;
+    ImageView closeButton;
+    RelativeLayout loginButton;
+    TextView signInLink;
+    TextView signUpLink;
+    ImageView closeButtonReg;
+    RelativeLayout signUpButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,14 +39,9 @@ public class BrainsterHomeUnregistered extends AppCompatActivity {
         registerDialog = new Dialog(this);
 
     }
-    public void openLogin(View v) {
-        loginDialog.setContentView(R.layout.activity_login);
-        registerDialog.setContentView(R.layout.activity_registration);
-        ImageView closeButton = (ImageView) loginDialog.findViewById(R.id.closeButtonLogo);
-        Button loginButton = (Button) loginDialog.findViewById(R.id.loginButton);
-        TextView signInLink = (TextView) registerDialog.findViewById(R.id.signIn);
-        TextView signUpLink = (TextView) loginDialog.findViewById(R.id.signUp);
+    public void loginAndRegisterDialog(View v) {
 
+        setUIViews();
         signInLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,6 +64,13 @@ public class BrainsterHomeUnregistered extends AppCompatActivity {
             }
         });
 
+        closeButtonReg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                registerDialog.dismiss();
+            }
+        });
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,6 +78,16 @@ public class BrainsterHomeUnregistered extends AppCompatActivity {
             }
         });
         loginDialog.show();
+    }
+    private void setUIViews() {
+        loginDialog.setContentView(R.layout.activity_login);
+        registerDialog.setContentView(R.layout.activity_registration);
+        closeButton = (ImageView) loginDialog.findViewById(R.id.closeButtonLogo);
+        loginButton = (RelativeLayout) loginDialog.findViewById(R.id.loginButton);
+        signInLink = (TextView) registerDialog.findViewById(R.id.signIn);
+        signUpLink = (TextView) loginDialog.findViewById(R.id.signUp);
+        closeButtonReg = (ImageView) registerDialog.findViewById(R.id.closeButton);
+        signUpButton = (RelativeLayout) registerDialog.findViewById(R.id.signUpButton);
     }
 
     public void login(View v) {
