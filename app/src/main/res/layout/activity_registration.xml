@@ -28,7 +28,8 @@
                 android:id="@+id/closeButtonLayout"
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/close_button_clicked">
+                android:background="@drawable/close_button_clicked"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck">
 
                 <ImageView
                     android:id="@+id/closeButton"
@@ -255,7 +256,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/quiz_font"
-                    android:textColor="@color/purple_700"
+                    android:textColor="@drawable/link_color_change"
                     android:text="Sign in!"
                     android:linksClickable="true"
                     android:textSize="18dp"></TextView>
