@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:theme="@android:style/Theme.Dialog"
+    >
+
+    <LinearLayout
+        android:id="@+id/popUpLayout"
+        android:layout_width="350dp"
+        android:layout_height="700dp"
+        android:layout_gravity="center"
+        android:background="@drawable/rating_border_no_stroke"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/upperBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="7dp"
+            android:layout_marginTop="7dp"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/closeButtonLayout"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/close_button_clicked">
+
+                <RelativeLayout
+                    android:id="@+id/closeButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:background="@drawable/close_button_clicked"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck">
+                    <ImageView
+                        android:id="@+id/closeButtonLogo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/close_button">
+                    </ImageView>
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/popUpLayoutMiddle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/popUpText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quiz_font"
+                android:text="Player statistics"
+                android:textAlignment="center"
+                android:textColor="#046AB8"
+                android:textSize="25dp"></TextView>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:id="@+id/statisticsUpperMiddleLayout"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:orientation="horizontal"
+                android:background="@drawable/winrate_big_layout">
+
+                <LinearLayout
+                    android:id="@+id/winrateLayout"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/winrateText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="Winrate"
+                        android:gravity="center"
+                        android:textColor="#046AB8"
+                        android:fontFamily="@font/quiz_font"
+                        android:textSize="20dp">
+                    </TextView>
+
+                    <RelativeLayout
+                        android:id="@+id/winsLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="15dp"
+                        android:background="@drawable/winrate_layout">
+
+                        <TextView
+                            android:id="@+id/winsPercentage"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textAlignment="center"
+                            android:text="62%"
+                            android:gravity="center"
+                            android:textColor="#FFFFFF"
+                            android:fontFamily="@font/quiz_font"
+                            android:textSize="35dp">
+                        </TextView>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/winsLosesLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginVertical="15dp">
+
+                    <LinearLayout
+                        android:id="@+id/winsRowLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_alignParentTop="true"
+                        android:gravity="center"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:id="@+id/winsText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Wins:"
+                            android:textColor="#046AB8"
+                            android:fontFamily="@font/quiz_font"
+                            android:textSize="20dp">
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/winsQuantity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="145"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="#046AB8"
+                            android:fontFamily="@font/quiz_font"
+                            android:textSize="20dp">
+                        </TextView>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/losesRowLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:id="@+id/losesText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Loses:"
+                            android:textColor="#046AB8"
+                            android:fontFamily="@font/quiz_font"
+                            android:textSize="20dp">
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/losesQuantity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="119"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="#046AB8"
+                            android:fontFamily="@font/quiz_font"
+                            android:textSize="20dp">
+                        </TextView>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/totalRowLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/totalText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total games:"
+                            android:textColor="#046AB8"
+                            android:fontFamily="@font/quiz_font"
+                            android:textSize="20dp">
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/totalQuantity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="264"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="#046AB8"
+                            android:fontFamily="@font/quiz_font"
+                            android:textSize="20dp">
+                        </TextView>
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/gamesSuccessfulnessLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/successfulness_background">
+
+            <LinearLayout
+                android:id="@+id/progressBarsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:id="@+id/gamesSuccessfulness"
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:layout_height="150dp"
+                    android:orientation="horizontal">
+
+                    <ProgressBar
+                        android:id="@+id/progress_bar_number_game"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="25dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="25dp"
+                        android:max="100"
+                        android:progress="47"
+                        android:progressDrawable="@drawable/progress_bar_games" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_bar_step_by_step_game"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="25dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="25dp"
+                        android:max="100"
+                        android:progress="82"
+                        android:progressDrawable="@drawable/progress_bar_games" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_bar_matching_game"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="25dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="25dp"
+                        android:max="100"
+                        android:progress="69"
+                        android:progressDrawable="@drawable/progress_bar_games" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_bar_combinations_game"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="25dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="25dp"
+                        android:max="100"
+                        android:progress="29"
+                        android:progressDrawable="@drawable/progress_bar_games" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_bar_questions_game"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="25dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="25dp"
+                        android:max="100"
+                        android:progress="45"
+                        android:progressDrawable="@drawable/progress_bar_games" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_bar_associations_game"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="25dp"
+                        android:layout_height="match_parent"
+                        android:max="100"
+                        android:progress="89"
+                        android:progressDrawable="@drawable/progress_bar_games" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+            <RelativeLayout
+                android:id="@+id/boxPointerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/statistics_per_game_back"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="30dp">
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/pointerLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/boxPointer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:gravity="top"
+                    android:text="▲"
+                    android:textColor="#0695CF"
+                    android:textSize="30dp"></TextView>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
