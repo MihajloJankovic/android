@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@android:id/background" android:drawable="#FC808080"/>
+    <item android:id="@android:id/background" android:drawable="@drawable/game_progress_bar_back"/>
 
     <item android:id="@android:id/progress">
         <scale android:scaleGravity="bottom" android:scaleWidth="0%" android:scaleHeight="100%">

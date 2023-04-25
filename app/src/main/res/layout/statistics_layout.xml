@@ -227,7 +227,7 @@
             android:layout_marginHorizontal="10dp"
             android:orientation="vertical"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/successfulness_background">
 
             <LinearLayout
@@ -251,9 +251,11 @@
                         android:layout_width="25dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="25dp"
+                        android:clickable="true"
                         android:max="100"
                         android:progress="47"
-                        android:progressDrawable="@drawable/progress_bar_games" />
+                        android:progressDrawable="@drawable/progress_bar_games"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                     <ProgressBar
                         android:id="@+id/progress_bar_step_by_step_game"
@@ -261,6 +263,7 @@
                         android:layout_width="25dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="25dp"
+                        android:clickable="true"
                         android:max="100"
                         android:progress="82"
                         android:progressDrawable="@drawable/progress_bar_games" />
@@ -271,6 +274,7 @@
                         android:layout_width="25dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="25dp"
+                        android:clickable="true"
                         android:max="100"
                         android:progress="69"
                         android:progressDrawable="@drawable/progress_bar_games" />
@@ -281,6 +285,7 @@
                         android:layout_width="25dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="25dp"
+                        android:clickable="true"
                         android:max="100"
                         android:progress="29"
                         android:progressDrawable="@drawable/progress_bar_games" />
@@ -290,6 +295,7 @@
                         style="@android:style/Widget.ProgressBar.Horizontal"
                         android:layout_width="25dp"
                         android:layout_height="match_parent"
+                        android:clickable="true"
                         android:layout_marginRight="25dp"
                         android:max="100"
                         android:progress="45"
@@ -300,6 +306,7 @@
                         style="@android:style/Widget.ProgressBar.Horizontal"
                         android:layout_width="25dp"
                         android:layout_height="match_parent"
+                        android:clickable="true"
                         android:max="100"
                         android:progress="89"
                         android:progressDrawable="@drawable/progress_bar_games" />
@@ -314,25 +321,296 @@
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
+                    android:id="@+id/boxLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/statistics_per_game_back"
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="30dp">
+
+                    <LinearLayout
+                        android:id="@+id/boxLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/boxHeader"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Number game - distance"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/quiz_font"
+                            android:textSize="20dp"
+                            android:layout_marginBottom="5dp"
+                            android:textAlignment="center">
+                        </TextView>
+
+                        <LinearLayout
+                            android:id="@+id/boxRow1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/row1Label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/quiz_font"
+                                android:text="correct number: "
+                                android:textAlignment="center"
+                                android:textColor="#4CAF50"
+                                android:textSize="16dp"></TextView>
+
+                            <TextView
+                                android:id="@+id/row1Value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/quiz_font"
+                                android:text="73%"
+                                android:textAlignment="center"
+                                android:textColor="#4CAF50"
+                                android:textSize="16dp"></TextView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/boxRow2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/row2Label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/quiz_font"
+                                android:text="1-4: "
+                                android:textAlignment="center"
+                                android:textColor="#8BC34A"
+                                android:textSize="16dp"></TextView>
+
+                            <TextView
+                                android:id="@+id/row2Value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/quiz_font"
+                                android:text="10%"
+                                android:textAlignment="center"
+                                android:textColor="#8BC34A"
+                                android:textSize="16dp"></TextView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/boxRow3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/row3Label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/quiz_font"
+                                android:text="5-9: "
+                                android:textAlignment="center"
+                                android:textColor="#CDDC39"
+                                android:textSize="16dp"></TextView>
+
+                            <TextView
+                                android:id="@+id/row3Value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/quiz_font"
+                                android:text="2%"
+                                android:textAlignment="center"
+                                android:textColor="#CDDC39"
+                                android:textSize="16dp"></TextView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/boxRow4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/row4Label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/quiz_font"
+                                android:text="10-19: "
+                                android:textAlignment="center"
+                                android:textColor="#FFEB3B"
+                                android:textSize="16dp"></TextView>
+
+                            <TextView
+                                android:id="@+id/row4Value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/quiz_font"
+                                android:text="3%"
+                                android:textAlignment="center"
+                                android:textColor="#FFEB3B"
+                                android:textSize="16dp"></TextView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/boxRow5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/row5Label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/quiz_font"
+                                android:text="20-49: "
+                                android:textAlignment="center"
+                                android:textColor="#FFC107"
+                                android:textSize="16dp"></TextView>
+
+                            <TextView
+                                android:id="@+id/row5Value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/quiz_font"
+                                android:text="2%"
+                                android:textAlignment="center"
+                                android:textColor="#FFC107"
+                                android:textSize="16dp"></TextView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/boxRow6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/row6Label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/quiz_font"
+                                android:text="50-99: "
+                                android:textAlignment="center"
+                                android:textColor="#FF9800"
+                                android:textSize="16dp"></TextView>
+
+                            <TextView
+                                android:id="@+id/row6Value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/quiz_font"
+                                android:text="2%"
+                                android:textAlignment="center"
+                                android:textColor="#FF9800"
+                                android:textSize="16dp"></TextView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/boxRow7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/row7Label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/quiz_font"
+                                android:text="100 and more: "
+                                android:textAlignment="center"
+                                android:textColor="#FF5722"
+                                android:textSize="16dp"></TextView>
+
+                            <TextView
+                                android:id="@+id/row7Value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/quiz_font"
+                                android:text="9%"
+                                android:textAlignment="center"
+                                android:textColor="#FF5722"
+                                android:textSize="16dp"></TextView>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
                 </RelativeLayout>
 
-                <RelativeLayout
-                    android:id="@+id/pointerLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </RelativeLayout>
+
+
 
                 <TextView
-                    android:id="@+id/boxPointer"
+                    android:id="@+id/firstBoxPointer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
+                    android:gravity="top"
+                    android:text="▲"
+                    android:textColor="#0695CF"
+                    android:textSize="30dp"></TextView>
+
+                <TextView
+                    android:id="@+id/secondBoxPointer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="75dp"
+                    android:visibility="invisible"
+                    android:gravity="top"
+                    android:text="▲"
+                    android:textColor="#0695CF"
+                    android:textSize="30dp"></TextView>
+
+                <TextView
+                    android:id="@+id/thirdBoxPointer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="125dp"
+                    android:visibility="invisible"
+                    android:gravity="top"
+                    android:text="▲"
+                    android:textColor="#0695CF"
+                    android:textSize="30dp"></TextView>
+
+                <TextView
+                    android:id="@+id/fourthBoxPointer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="175dp"
+                    android:visibility="invisible"
+                    android:gravity="top"
+                    android:text="▲"
+                    android:textColor="#0695CF"
+                    android:textSize="30dp"></TextView>
+
+                <TextView
+                    android:id="@+id/fifthBoxPointer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="225dp"
+                    android:visibility="invisible"
+                    android:gravity="top"
+                    android:text="▲"
+                    android:textColor="#0695CF"
+                    android:textSize="30dp"></TextView>
+
+                <TextView
+                    android:id="@+id/sixthBoxPointer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="275dp"
+                    android:visibility="invisible"
                     android:gravity="top"
                     android:text="▲"
                     android:textColor="#0695CF"

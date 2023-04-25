@@ -206,20 +206,20 @@
                 android:layout_centerInParent="true">
 
                 <RelativeLayout
+                    android:id="@+id/saveProfileButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/click_start_button"
-                    android:id="@+id/loginButton"
                     android:clickable="true">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Statistics"
-                        android:textColor="@color/white"
-                        android:textSize="25dp"
                         android:fontFamily="@font/quiz_font"
-                        android:gravity="center">
-                    </TextView>
+                        android:gravity="center"
+                        android:text="Save"
+                        android:textColor="@color/white"
+                        android:textSize="25dp"></TextView>
                 </RelativeLayout>
             </LinearLayout>
 

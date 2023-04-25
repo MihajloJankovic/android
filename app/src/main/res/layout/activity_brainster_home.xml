@@ -446,6 +446,8 @@
                         android:id="@+id/statistics"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:onClick="statisticsBoxListeners"
                         android:background="@drawable/click_statistics"
                         android:gravity="right"></RelativeLayout>
                 </RelativeLayout>
