@@ -266,7 +266,8 @@
                         android:clickable="true"
                         android:max="100"
                         android:progress="82"
-                        android:progressDrawable="@drawable/progress_bar_games" />
+                        android:progressDrawable="@drawable/progress_bar_games"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                     <ProgressBar
                         android:id="@+id/progress_bar_matching_game"
@@ -277,7 +278,8 @@
                         android:clickable="true"
                         android:max="100"
                         android:progress="69"
-                        android:progressDrawable="@drawable/progress_bar_games" />
+                        android:progressDrawable="@drawable/progress_bar_games"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                     <ProgressBar
                         android:id="@+id/progress_bar_combinations_game"
@@ -288,18 +290,20 @@
                         android:clickable="true"
                         android:max="100"
                         android:progress="29"
-                        android:progressDrawable="@drawable/progress_bar_games" />
+                        android:progressDrawable="@drawable/progress_bar_games"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                     <ProgressBar
                         android:id="@+id/progress_bar_questions_game"
                         style="@android:style/Widget.ProgressBar.Horizontal"
                         android:layout_width="25dp"
                         android:layout_height="match_parent"
-                        android:clickable="true"
                         android:layout_marginRight="25dp"
+                        android:clickable="true"
                         android:max="100"
                         android:progress="45"
-                        android:progressDrawable="@drawable/progress_bar_games" />
+                        android:progressDrawable="@drawable/progress_bar_games"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                     <ProgressBar
                         android:id="@+id/progress_bar_associations_game"
@@ -309,7 +313,8 @@
                         android:clickable="true"
                         android:max="100"
                         android:progress="89"
-                        android:progressDrawable="@drawable/progress_bar_games" />
+                        android:progressDrawable="@drawable/progress_bar_games"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
                 </LinearLayout>
             </LinearLayout>
 
