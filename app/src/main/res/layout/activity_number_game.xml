@@ -341,11 +341,17 @@
 
                     <RelativeLayout
                         android:id="@+id/inputNumbersLayout"
-                        android:layout_width="wrap_content"
+                        android:layout_width="320dp"
                         android:layout_height="match_parent"
                         android:layout_centerVertical="true"
                         android:layout_marginVertical="3dp">
 
+                        <TextView
+                            android:id="@+id/inputNumbers"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp">
+                        </TextView>
                     </RelativeLayout>
 
                     <RelativeLayout
