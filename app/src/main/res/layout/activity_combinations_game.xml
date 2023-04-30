@@ -196,7 +196,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="80dp"
-        android:orientation="vertical">
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:fadeScrollbars="false">
 
         <LinearLayout
             android:id="@+id/gameExplainerLayout"
@@ -220,16 +222,16 @@
 
         <LinearLayout
             android:id="@+id/wrapperMain"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginHorizontal="10dp">
+            android:scrollbars="none">
 
             <LinearLayout
                 android:id="@+id/guessingPartLayout"
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
+                android:layout_marginHorizontal="5dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -1302,130 +1304,139 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/symbolsLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="right"
-                android:background="@drawable/guessing_part_back">
+                android:layout_width="70dp"
+                android:layout_height="475dp"
+                android:orientation="horizontal"
+                android:background="@drawable/guessing_part_back"
+                android:fadeScrollbars="false">
 
                 <LinearLayout
-                    android:id="@+id/symbol1Layout"
+                    android:id="@+id/symbolsLinearLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="71dp"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="9dp"
-                    android:background="@drawable/numbers_clicked"
-                    android:clickable="true"
-                    android:orientation="horizontal"
-                    tools:ignore="SpeakableTextPresentCheck">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/symbol1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="4dp"
-                        android:background="@drawable/brainster_logo"></ImageView>
+                    <LinearLayout
+                        android:id="@+id/symbol1Layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="71dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="9dp"
+                        android:background="@drawable/numbers_clicked"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        tools:ignore="SpeakableTextPresentCheck">
+
+                        <ImageView
+                            android:id="@+id/symbol1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/brainster_logo"></ImageView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/symbol2Layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="71dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_marginBottom="9dp"
+                        android:background="@drawable/numbers_clicked"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        tools:ignore="SpeakableTextPresentCheck"
+                        android:padding="4dp">
+
+                        <ImageView
+                            android:id="@+id/symbol2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/club"></ImageView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/symbol3Layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="71dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_marginBottom="9dp"
+                        android:background="@drawable/numbers_clicked"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        tools:ignore="SpeakableTextPresentCheck">
+
+                        <ImageView
+                            android:id="@+id/symbol3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/spade"></ImageView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/symbol4Layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="71dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_marginBottom="9dp"
+                        android:background="@drawable/numbers_clicked"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        tools:ignore="SpeakableTextPresentCheck">
+
+                        <ImageView
+                            android:id="@+id/symbol4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginHorizontal="8dp"
+                            android:layout_marginVertical="10dp"
+                            android:background="@drawable/hearts"></ImageView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/symbol5Layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="71dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_marginBottom="9dp"
+                        android:background="@drawable/numbers_clicked"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        tools:ignore="SpeakableTextPresentCheck">
+
+                        <ImageView
+                            android:id="@+id/symbol5"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="7dp"
+                            android:background="@drawable/diamonds"></ImageView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/symbol6Layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="71dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:background="@drawable/numbers_clicked"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        tools:ignore="SpeakableTextPresentCheck">
+
+                        <ImageView
+                            android:id="@+id/symbol6"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/star_borderless"></ImageView>
+                    </LinearLayout>
+
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/symbol2Layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="71dp"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_marginBottom="9dp"
-                    android:background="@drawable/numbers_clicked"
-                    android:clickable="true"
-                    android:orientation="horizontal"
-                    tools:ignore="SpeakableTextPresentCheck">
 
-                    <ImageView
-                        android:id="@+id/symbol2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="7dp"
-                        android:background="@drawable/club"></ImageView>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/symbol3Layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="71dp"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_marginBottom="9dp"
-                    android:background="@drawable/numbers_clicked"
-                    android:clickable="true"
-                    android:orientation="horizontal"
-                    tools:ignore="SpeakableTextPresentCheck">
-
-                    <ImageView
-                        android:id="@+id/symbol3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/spade"></ImageView>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/symbol4Layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="71dp"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_marginBottom="9dp"
-                    android:background="@drawable/numbers_clicked"
-                    android:clickable="true"
-                    android:orientation="horizontal"
-                    tools:ignore="SpeakableTextPresentCheck">
-
-                    <ImageView
-                        android:id="@+id/symbol4"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="8dp"
-                        android:layout_marginVertical="10dp"
-                        android:background="@drawable/hearts"></ImageView>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/symbol5Layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="71dp"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_marginBottom="9dp"
-                    android:background="@drawable/numbers_clicked"
-                    android:clickable="true"
-                    android:orientation="horizontal"
-                    tools:ignore="SpeakableTextPresentCheck">
-
-                    <ImageView
-                        android:id="@+id/symbol5"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="7dp"
-                        android:background="@drawable/diamonds"></ImageView>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/symbol6Layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="71dp"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_marginBottom="2dp"
-                    android:background="@drawable/numbers_clicked"
-                    android:clickable="true"
-                    android:orientation="horizontal"
-                    tools:ignore="SpeakableTextPresentCheck">
-
-                    <ImageView
-                        android:id="@+id/symbol6"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/star_borderless"></ImageView>
-                </LinearLayout>
-            </LinearLayout>
+            </RelativeLayout>
 
         </LinearLayout>
     </LinearLayout>
