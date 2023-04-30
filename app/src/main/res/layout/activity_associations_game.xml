@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MatchingGameActivity"
+    tools:context=".AssociationsGame"
     android:background="@drawable/main_gradient">
 
     <LinearLayout
@@ -192,7 +192,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/matchingGameLayout"
+        android:id="@+id/associationsGameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="80dp"
@@ -209,65 +209,47 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/quiz_font"
-                android:text="MATCH THE ELEMENTS CORRECTLY"
+                android:text="OPEN THE FIELD"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="15dp"
                 tools:ignore="TextSizeCheck"></TextView>
         </LinearLayout>
 
-        <RelativeLayout
-            android:id="@+id/matchingHeaderLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#4102B3">
 
-            <TextView
-                android:id="@+id/matchingHeader"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
-                android:text="Match the capitals with the countries they're in"
-                android:fontFamily="@font/quiz_font"
-                android:textSize="18dp"
-                android:textColor="@color/white"
-                android:gravity="center"
-                android:layout_marginHorizontal="10dp">
-            </TextView>
-        </RelativeLayout>
         <LinearLayout
-            android:id="@+id/matchingFieldsLayout"
+            android:id="@+id/associationsMainLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
             android:orientation="vertical"
-            android:layout_marginHorizontal="15dp">
+            android:gravity="center"
+            android:layout_marginHorizontal="10dp">
 
             <LinearLayout
-                android:id="@+id/matchingPair1"
+                android:id="@+id/A1B1Layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
-                android:layout_marginBottom="30dp">
+                android:layout_marginBottom="5dp">
 
                 <RelativeLayout
-                    android:id="@+id/matchingPair1Relative"
+                    android:id="@+id/A1B1Relative"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <LinearLayout
-                        android:id="@+id/matchingPair1Left"
-                        android:layout_width="175dp"
+                        android:id="@+id/A1"
+                        android:layout_width="185dp"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
                         android:background="@drawable/numbers_clicked"
                         android:clickable="true">
 
                         <TextView
-                            android:id="@+id/matchingPair1LeftTxt"
+                            android:id="@+id/A1Txt"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="ROME"
+                            android:text="A1"
                             android:fontFamily="@font/quiz_font"
                             android:gravity="center"
                             android:textSize="20dp"
@@ -277,8 +259,8 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/matchingPair1Right"
-                        android:layout_width="175dp"
+                        android:id="@+id/B1"
+                        android:layout_width="185dp"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
                         android:layout_alignParentEnd="true"
@@ -286,10 +268,10 @@
                         android:clickable="true">
 
                         <TextView
-                            android:id="@+id/matchingPair1RightTxt"
+                            android:id="@+id/B1Txt"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="SERBIA"
+                            android:text="B1"
                             android:fontFamily="@font/quiz_font"
                             android:gravity="center"
                             android:textSize="20dp"
@@ -302,30 +284,30 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/matchingPair2"
+                android:id="@+id/A2B2Layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
-                android:layout_marginBottom="30dp">
+                android:layout_marginBottom="5dp">
 
                 <RelativeLayout
-                    android:id="@+id/matchingPair2Relative"
+                    android:id="@+id/A2B2Relative"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <LinearLayout
-                        android:id="@+id/matchingPair2Left"
-                        android:layout_width="175dp"
+                        android:id="@+id/A2"
+                        android:layout_width="185dp"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
                         android:background="@drawable/numbers_clicked"
                         android:clickable="true">
 
                         <TextView
-                            android:id="@+id/matchingPair2LeftTxt"
+                            android:id="@+id/A2Txt"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="STOCKHOLM"
+                            android:text="A2"
                             android:fontFamily="@font/quiz_font"
                             android:gravity="center"
                             android:textSize="20dp"
@@ -335,8 +317,8 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/matchingPair2Right"
-                        android:layout_width="175dp"
+                        android:id="@+id/B2"
+                        android:layout_width="185dp"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
                         android:layout_alignParentEnd="true"
@@ -344,10 +326,10 @@
                         android:clickable="true">
 
                         <TextView
-                            android:id="@+id/matchingPair2RightTxt"
+                            android:id="@+id/B2Txt"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="JAPAN"
+                            android:text="B2"
                             android:fontFamily="@font/quiz_font"
                             android:gravity="center"
                             android:textSize="20dp"
@@ -357,35 +339,33 @@
                     </LinearLayout>
                 </RelativeLayout>
 
-
-
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/matchingPair3"
+                android:id="@+id/A3B3Layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
-                android:layout_marginBottom="30dp">
+                android:layout_marginBottom="5dp">
 
                 <RelativeLayout
-                    android:id="@+id/matchingPair3Relative"
+                    android:id="@+id/A3B3Relative"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <LinearLayout
-                        android:id="@+id/matchingPair3Left"
-                        android:layout_width="175dp"
+                        android:id="@+id/A3"
+                        android:layout_width="185dp"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
                         android:background="@drawable/numbers_clicked"
                         android:clickable="true">
 
                         <TextView
-                            android:id="@+id/matchingPair3LeftTxt"
+                            android:id="@+id/A3Txt"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="BELGRADE"
+                            android:text="A3"
                             android:fontFamily="@font/quiz_font"
                             android:gravity="center"
                             android:textSize="20dp"
@@ -395,8 +375,8 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/matchingPair3Right"
-                        android:layout_width="175dp"
+                        android:id="@+id/B3"
+                        android:layout_width="185dp"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
                         android:layout_alignParentEnd="true"
@@ -404,10 +384,10 @@
                         android:clickable="true">
 
                         <TextView
-                            android:id="@+id/matchingPair3RightTxt"
+                            android:id="@+id/B3Txt"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="SWEDEN"
+                            android:text="B3"
                             android:fontFamily="@font/quiz_font"
                             android:gravity="center"
                             android:textSize="20dp"
@@ -420,30 +400,30 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/matchingPair4"
+                android:id="@+id/A4B4Layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
-                android:layout_marginBottom="30dp">
+                android:layout_marginBottom="5dp">
 
                 <RelativeLayout
-                    android:id="@+id/matchingPair4Relative"
+                    android:id="@+id/A4B4Relative"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <LinearLayout
-                        android:id="@+id/matchingPair4Left"
-                        android:layout_width="175dp"
+                        android:id="@+id/A4"
+                        android:layout_width="185dp"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
                         android:background="@drawable/numbers_clicked"
                         android:clickable="true">
 
                         <TextView
-                            android:id="@+id/matchingPair4LeftTxt"
+                            android:id="@+id/A4Txt"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="CANBERRA"
+                            android:text="A4"
                             android:fontFamily="@font/quiz_font"
                             android:gravity="center"
                             android:textSize="20dp"
@@ -453,8 +433,8 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/matchingPair4Right"
-                        android:layout_width="175dp"
+                        android:id="@+id/B4"
+                        android:layout_width="185dp"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
                         android:layout_alignParentEnd="true"
@@ -462,10 +442,10 @@
                         android:clickable="true">
 
                         <TextView
-                            android:id="@+id/matchingPair4RightTxt"
+                            android:id="@+id/B4Txt"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="AUSTRALIA"
+                            android:text="B4"
                             android:fontFamily="@font/quiz_font"
                             android:gravity="center"
                             android:textSize="20dp"
@@ -478,29 +458,30 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/matchingPair5"
+                android:id="@+id/ABLayout"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal">
+                android:layout_height="65dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
 
                 <RelativeLayout
-                    android:id="@+id/matchingPair5Relative"
+                    android:id="@+id/ABRelative"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <LinearLayout
-                        android:id="@+id/matchingPair5Left"
-                        android:layout_width="175dp"
+                        android:id="@+id/A"
+                        android:layout_width="185dp"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
                         android:background="@drawable/numbers_clicked"
                         android:clickable="true">
 
                         <TextView
-                            android:id="@+id/matchingPair5LeftTxt"
+                            android:id="@+id/ATxt"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="TOKYO"
+                            android:text="A"
                             android:fontFamily="@font/quiz_font"
                             android:gravity="center"
                             android:textSize="20dp"
@@ -510,8 +491,8 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/matchingPair5Right"
-                        android:layout_width="175dp"
+                        android:id="@+id/B"
+                        android:layout_width="185dp"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
                         android:layout_alignParentEnd="true"
@@ -519,10 +500,10 @@
                         android:clickable="true">
 
                         <TextView
-                            android:id="@+id/matchingPair5RightTxt"
+                            android:id="@+id/BTxt"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="ITALY"
+                            android:text="B"
                             android:fontFamily="@font/quiz_font"
                             android:gravity="center"
                             android:textSize="20dp"
@@ -532,9 +513,325 @@
                     </LinearLayout>
                 </RelativeLayout>
 
+            </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/finalLayout"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/numbers_clicked"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/finalTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="\???"
+                    android:fontFamily="@font/quiz_font"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:textColor="#02217E">
+                </TextView>
 
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/CDLayout"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/CDRelative"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/C"
+                        android:layout_width="185dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:background="@drawable/numbers_clicked"
+                        android:clickable="true">
+
+                        <TextView
+                            android:id="@+id/CTxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="C"
+                            android:fontFamily="@font/quiz_font"
+                            android:gravity="center"
+                            android:textSize="20dp"
+                            android:textColor="#02217E">
+                        </TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/D"
+                        android:layout_width="185dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/numbers_clicked"
+                        android:clickable="true">
+
+                        <TextView
+                            android:id="@+id/DTxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="D"
+                            android:fontFamily="@font/quiz_font"
+                            android:gravity="center"
+                            android:textSize="20dp"
+                            android:textColor="#02217E">
+                        </TextView>
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/C4D4Layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/C4C4Relative"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/C4"
+                        android:layout_width="185dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:background="@drawable/numbers_clicked"
+                        android:clickable="true">
+
+                        <TextView
+                            android:id="@+id/C4Txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="C4"
+                            android:fontFamily="@font/quiz_font"
+                            android:gravity="center"
+                            android:textSize="20dp"
+                            android:textColor="#02217E">
+                        </TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/D4"
+                        android:layout_width="185dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/numbers_clicked"
+                        android:clickable="true">
+
+                        <TextView
+                            android:id="@+id/D4Txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="D4"
+                            android:fontFamily="@font/quiz_font"
+                            android:gravity="center"
+                            android:textSize="20dp"
+                            android:textColor="#02217E">
+                        </TextView>
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/C3D3Layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/C3D3Relative"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/C3"
+                        android:layout_width="185dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:background="@drawable/numbers_clicked"
+                        android:clickable="true">
+
+                        <TextView
+                            android:id="@+id/C3Txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="C3"
+                            android:fontFamily="@font/quiz_font"
+                            android:gravity="center"
+                            android:textSize="20dp"
+                            android:textColor="#02217E">
+                        </TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/D3"
+                        android:layout_width="185dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/numbers_clicked"
+                        android:clickable="true">
+
+                        <TextView
+                            android:id="@+id/D3Txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="D3"
+                            android:fontFamily="@font/quiz_font"
+                            android:gravity="center"
+                            android:textSize="20dp"
+                            android:textColor="#02217E">
+                        </TextView>
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/C2D2Layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/C2D2Relative"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/C2"
+                        android:layout_width="185dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:background="@drawable/numbers_clicked"
+                        android:clickable="true">
+
+                        <TextView
+                            android:id="@+id/C2Txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="C2"
+                            android:fontFamily="@font/quiz_font"
+                            android:gravity="center"
+                            android:textSize="20dp"
+                            android:textColor="#02217E">
+                        </TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/D2"
+                        android:layout_width="185dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/numbers_clicked"
+                        android:clickable="true">
+
+                        <TextView
+                            android:id="@+id/D2Txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="D2"
+                            android:fontFamily="@font/quiz_font"
+                            android:gravity="center"
+                            android:textSize="20dp"
+                            android:textColor="#02217E">
+                        </TextView>
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/C1D1Layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/C1D1Relative"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/C1"
+                        android:layout_width="185dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:background="@drawable/numbers_clicked"
+                        android:clickable="true">
+
+                        <TextView
+                            android:id="@+id/C1Txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="C1"
+                            android:fontFamily="@font/quiz_font"
+                            android:gravity="center"
+                            android:textSize="20dp"
+                            android:textColor="#02217E">
+                        </TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/D1"
+                        android:layout_width="185dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/numbers_clicked"
+                        android:clickable="true">
+
+                        <TextView
+                            android:id="@+id/D1Txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="D1"
+                            android:fontFamily="@font/quiz_font"
+                            android:gravity="center"
+                            android:textSize="20dp"
+                            android:textColor="#02217E">
+                        </TextView>
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+
+
+
 
         </LinearLayout>
 
