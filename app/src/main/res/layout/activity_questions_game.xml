@@ -513,7 +513,6 @@
                         android:fontFamily="@font/quiz_font"
                         android:textColor="#0D3778"
                         android:gravity="center"
-                        android:foreground=""
                         android:layout_marginHorizontal="10dp">
                     </TextView>
                 </LinearLayout>
