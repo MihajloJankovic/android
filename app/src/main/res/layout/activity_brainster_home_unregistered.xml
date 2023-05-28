@@ -229,9 +229,12 @@
                                 android:layout_height="match_parent"
                                 android:fontFamily="@font/quiz_font"
                                 android:text="Start game"
+                                android:clickable="true"
                                 android:textColor="@color/white"
                                 android:textSize="28dp"
+                                android:onClick="onClick"
                                 android:gravity="center">
+
                             </TextView>
 
                         </RelativeLayout>
