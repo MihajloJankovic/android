@@ -48,6 +48,7 @@ public class BrainsterHomeUnregistered extends AppCompatActivity {
 
             intent.putExtra("solo", 1);
             intent.putExtra("round", 0);
+        intent.putExtra("rScore", "0");
 
         startActivity(intent);
     }
