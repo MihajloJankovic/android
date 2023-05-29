@@ -30,6 +30,7 @@ public class BrainsterHomeUnregistered extends AppCompatActivity {
     TextView signUpLink;
     ImageView closeButtonReg;
     RelativeLayout signUpButton;
+    TextView play;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +38,19 @@ public class BrainsterHomeUnregistered extends AppCompatActivity {
         getSupportActionBar().hide();
         loginDialog = new Dialog(this);
         registerDialog = new Dialog(this);
+        this.play = (TextView) findViewById(R.id.startGameText);
 
+    }
+
+    public void onClick(View v) {
+        Intent intent = new Intent(getApplicationContext(), AssociationsGame.class);
+
+
+            intent.putExtra("solo", 1);
+            intent.putExtra("round", 0);
+        intent.putExtra("rScore", "0");
+
+        startActivity(intent);
     }
     public void loginAndRegisterDialog(View v) {
 
@@ -50,11 +63,11 @@ public class BrainsterHomeUnregistered extends AppCompatActivity {
             }
         });
 
-        signUpLink.setOnClickListener(new View.OnClickListener() {
+
+        closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 loginDialog.dismiss();
-                registerDialog.show();
             }
         });
         closeButton.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +76,6 @@ public class BrainsterHomeUnregistered extends AppCompatActivity {
                 loginDialog.dismiss();
             }
         });
-
         closeButtonReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,6 +90,7 @@ public class BrainsterHomeUnregistered extends AppCompatActivity {
             }
         });
         loginDialog.show();
+
     }
     private void setUIViews() {
         loginDialog.setContentView(R.layout.activity_login);
