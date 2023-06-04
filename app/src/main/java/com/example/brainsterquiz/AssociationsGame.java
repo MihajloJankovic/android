@@ -40,7 +40,7 @@ public class AssociationsGame extends AppCompatActivity {
     private int Bg;
     private int Cg;
     private int Dg;
-
+    int ab;
     private TextView B2Txt;
     private String m_Text = "";
     private TextView B1Txt;
@@ -71,6 +71,7 @@ public class AssociationsGame extends AppCompatActivity {
     private TextView bScore1;
     private int hint = 0;
     private int opened;
+    CountDownTimer timera;
 
     FirebaseFirestore db;
 
@@ -78,6 +79,7 @@ public class AssociationsGame extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
          db = FirebaseFirestore.getInstance();
+        ab = 0;
         Aopen = 0;
         Bopen = 0;
         Copen = 0;
@@ -148,7 +150,8 @@ public class AssociationsGame extends AppCompatActivity {
         this.rName1.setText(rName);
         this.bName1.setText(bName);
 
-        new CountDownTimer(120000, 1000) {
+
+       timera= new CountDownTimer(120000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 timer.setText("" + millisUntilFinished / 1000);
@@ -156,11 +159,42 @@ public class AssociationsGame extends AppCompatActivity {
 
             public void onFinish() {
                 timer.setText("done!");
-                if(round == 1)
+                if(round == 1 && ab == 0 && turn != 3)
                 {
-                    // next game
+                    Intent intent = new Intent(getApplicationContext(), CombinationsGame.class);
+                    intent.putExtra("rName", rName);
+                    intent.putExtra("bName", bName);
+                    intent.putExtra("rScore", rScore);
+                    intent.putExtra("bScore",bScore);
+                    if(turn == 3)
+                    {
+                        intent.putExtra("solo", 1);
+                    }else{
+                        intent.putExtra("solo", 0);
+                    }
+                    intent.putExtra("round", 0);
+
+                    startActivity(intent);
+
+                }if(round == 0 && ab == 0 && turn == 3)
+                {
+                    Intent intent = new Intent(getApplicationContext(), CombinationsGame.class);
+                    intent.putExtra("rName", rName);
+                    intent.putExtra("bName", bName);
+                    intent.putExtra("rScore", rScore);
+                    intent.putExtra("bScore",bScore);
+                    if(turn == 3)
+                    {
+                        intent.putExtra("solo", 1);
+                    }else{
+                        intent.putExtra("solo", 0);
+                    }
+                    intent.putExtra("round", 0);
+
+                    startActivity(intent);
+
                 }
-                if(round == 0)
+                if(round == 0 && ab== 0 && turn !=3)
                 {
                     Intent intent = new Intent(getApplicationContext(), AssociationsGame.class);
                     intent.putExtra("rName", rName);
@@ -176,6 +210,7 @@ public class AssociationsGame extends AppCompatActivity {
                     intent.putExtra("round", 1);
 
                     startActivity(intent);
+
                 }
             }
         }.start();
@@ -561,12 +596,30 @@ public class AssociationsGame extends AppCompatActivity {
                                         handler.postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
-                                                if(round == 1)
+                                                if(round == 1 && turn !=3)
                                                 {
-                                                    // next game
+                                                    ab=1;
+                                                    timera.cancel();
+                                                    Intent intent = new Intent(getApplicationContext(), CombinationsGame.class);
+                                                    intent.putExtra("rName", rName);
+                                                    intent.putExtra("bName", bName);
+                                                    intent.putExtra("rScore", rScore);
+                                                    intent.putExtra("bScore",bScore);
+                                                    if(turn == 3)
+                                                    {
+                                                        intent.putExtra("solo", 1);
+                                                    }else{
+                                                        intent.putExtra("solo", 0);
+                                                    }
+                                                    intent.putExtra("round", 0);
+
+                                                    startActivity(intent);
+                                                    finish();
                                                 }
-                                                if(round == 0)
+                                                if(round == 0 && turn !=3)
                                                 {
+                                                    ab=1;
+                                                    timera.cancel();
                                                     Intent intent = new Intent(getApplicationContext(), AssociationsGame.class);
                                                     intent.putExtra("rName", rName);
                                                     intent.putExtra("bName", bName);
@@ -582,6 +635,26 @@ public class AssociationsGame extends AppCompatActivity {
 
                                                     startActivity(intent);
                                                     finish();
+                                                }
+                                                if(round == 0 && turn ==3)
+                                                {
+                                                    ab=1;
+                                                    timera.cancel();
+                                                    Intent intent = new Intent(getApplicationContext(), CombinationsGame.class);
+                                                    intent.putExtra("rName", rName);
+                                                    intent.putExtra("bName", bName);
+                                                    intent.putExtra("rScore", rScore);
+                                                    intent.putExtra("bScore",bScore);
+                                                    if(turn == 3)
+                                                    {
+                                                        intent.putExtra("solo", 1);
+                                                    }else{
+                                                        intent.putExtra("solo", 0);
+                                                    }
+                                                    intent.putExtra("round", 0);
+
+                                                    startActivity(intent);
+
                                                 }
 
 
