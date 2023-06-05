@@ -3,12 +3,25 @@ package com.example.brainsterquiz;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.BlendMode;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 public class CombinationsGame extends AppCompatActivity {
     private TextView timer;
@@ -30,6 +43,14 @@ public class CombinationsGame extends AppCompatActivity {
     private TextView bScore1;
     private int hint = 0;
     private int opened;
+    private int posetion =1;
+    private int cardPosition =1;
+    int ab=0;
+    private int allSubmited= 0;
+    private int guessedTrue = 0;
+    Map<Integer,Integer> combination=new HashMap<Integer,Integer>();
+    Map<Integer,Integer> guessedCombination=new HashMap<Integer,Integer>();
+    Map<Integer,Integer> temp=new HashMap<Integer,Integer>();
     CountDownTimer timera;
 
     FirebaseFirestore db;
@@ -77,15 +98,22 @@ public class CombinationsGame extends AppCompatActivity {
         this.bName1 = (TextView) findViewById(R.id.bluePlayerName);
         this.s1 = (ImageView) findViewById(R.id.symbol1);
         this.s2 = (ImageView) findViewById(R.id.symbol2);
-        this.s1 = (ImageView) findViewById(R.id.symbol3);
-        this.s1 = (ImageView) findViewById(R.id.symbol4);
-        this.s1= (ImageView) findViewById(R.id.symbol5);
-        this.s1= (ImageView) findViewById(R.id.symbol6);
+        this.s3 = (ImageView) findViewById(R.id.symbol3);
+        this.s4 = (ImageView) findViewById(R.id.symbol4);
+        this.s5= (ImageView) findViewById(R.id.symbol5);
+        this.s6= (ImageView) findViewById(R.id.symbol6);
         this.rScore1.setText(rScore);
         this.bScore1.setText(bScore);
+        Random rand = new Random();
+
+        for(int i =0;i <4 ;i++)
+        {
+            int randomNum = (int) ((Math.random() * (6 - 1)) + 1);
+            combination.put(i+1,randomNum);
+        }
         this.rName1.setText(rName);
         this.bName1.setText(bName);
-        timera=    new CountDownTimer(30000, 1000) {
+        timera=    new CountDownTimer(60000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 timer.setText("" + millisUntilFinished / 1000);
@@ -93,11 +121,43 @@ public class CombinationsGame extends AppCompatActivity {
 
             public void onFinish() {
                 timer.setText("done!");
-                if(round == 1)
+                timer.setText("done!");
+                if(round == 1  && turn != 3)
                 {
-                    //next gmae
+                    Intent intent = new Intent(getApplicationContext(), StepByStepGame.class);
+                    intent.putExtra("rName", rName);
+                    intent.putExtra("bName", bName);
+                    intent.putExtra("rScore", rScore);
+                    intent.putExtra("bScore",bScore);
+                    if(turn == 3)
+                    {
+                        intent.putExtra("solo", 1);
+                    }else{
+                        intent.putExtra("solo", 0);
+                    }
+                    intent.putExtra("round", 0);
+
+                    startActivity(intent);
+
+                }if(round == 0 && turn == 3)
+                {
+                    Intent intent = new Intent(getApplicationContext(), StepByStepGame.class);
+                    intent.putExtra("rName", rName);
+                    intent.putExtra("bName", bName);
+                    intent.putExtra("rScore", rScore);
+                    intent.putExtra("bScore",bScore);
+                    if(turn == 3)
+                    {
+                        intent.putExtra("solo", 1);
+                    }else{
+                        intent.putExtra("solo", 0);
+                    }
+                    intent.putExtra("round", 0);
+
+                    startActivity(intent);
+
                 }
-                if(round == 0)
+                if(round == 0  && turn !=3)
                 {
                     Intent intent = new Intent(getApplicationContext(), CombinationsGame.class);
                     intent.putExtra("rName", rName);
@@ -113,7 +173,7 @@ public class CombinationsGame extends AppCompatActivity {
                     intent.putExtra("round", 1);
 
                     startActivity(intent);
-                    finish();
+
                 }
             }
         }.start();
@@ -121,5 +181,425 @@ public class CombinationsGame extends AppCompatActivity {
 
 
     }
+    public void open(View v) {
+        if(guessedTrue ==1)
+        {
+            return;
+        }
+        switch (v.getId())
+        {
+            case R.id.symbol1 : if(allSubmited == 1)
+            {
+                guessedCombination.put(posetion,1);
+                break;
+            }
+            else{
+                guessedCombination.put(posetion,1);
+                addToUI(1);
+                if(posetion == 4){
+                    allSubmited = 1;
 
-}
+                    check();
+                }
+                else {
+                    posetion = posetion+1;
+                }
+                ++cardPosition;
+                break;
+            }
+            case R.id.symbol2 :if(allSubmited == 1)
+            {
+
+                break;
+            }
+            else{
+                guessedCombination.put(posetion,2);
+                addToUI(2);
+                if(posetion == 4){
+                    allSubmited = 1;
+
+                    check();
+                }
+                else {
+                    posetion = posetion+1;
+                }
+                ++cardPosition;
+                break;
+            }
+            case R.id.symbol3 :if(allSubmited == 1)
+            {
+
+                break;
+            }
+            else{
+                guessedCombination.put(posetion,3);
+                addToUI(3);
+                if(posetion == 4){
+                    allSubmited = 1;
+
+                    check();
+                }
+                else {
+                    posetion = posetion+1;
+                }
+                ++cardPosition;
+                break;
+            }
+            case R.id.symbol4 :if(allSubmited == 1)
+            {
+
+                break;
+            }
+            else{
+                guessedCombination.put(posetion,4);
+                addToUI(4);
+                if(posetion == 4){
+                    allSubmited = 1;
+                    check();
+                }
+                else {
+                    posetion = posetion+1;
+                }
+
+                ++cardPosition;
+                break;
+            }
+            case R.id.symbol5 :if(allSubmited == 1)
+            {
+
+                break;
+            }
+            else{
+                guessedCombination.put(posetion,5);
+                addToUI(5);
+                if(posetion == 4){
+                    allSubmited = 1;
+
+                    check();
+                }
+                else {
+                    posetion = posetion+1;
+                }
+                ++cardPosition;
+                break;
+            }
+            case R.id.symbol6 :if(allSubmited == 1)
+            {
+
+                break;
+            }
+            else{
+                guessedCombination.put(posetion,6);
+                addToUI(6);
+                if(posetion == 4){
+                    allSubmited = 1;
+                    check();
+
+                }
+                else {
+                    posetion = posetion+1;
+                }
+                ++cardPosition;
+                break;
+            }
+        }
+
+       if(ab==1){
+           guessedTrue=1;
+           Handler handler = new Handler();
+           handler.postDelayed(new Runnable() {
+               @Override
+               public void run() {
+                   timera.cancel();
+                   Intent intent = new Intent(getApplicationContext(), StepByStepGame.class);
+                   intent.putExtra("rName", rName);
+                   intent.putExtra("bName", bName);
+                   intent.putExtra("rScore", rScore);
+                   intent.putExtra("bScore", bScore);
+                   if (turn == 3) {
+                       intent.putExtra("solo", 1);
+                   } else {
+                       intent.putExtra("solo", 0);
+                   }
+                   intent.putExtra("round", 0);
+
+                   startActivity(intent);
+                   finish();
+               }
+           }, 2000);
+       }
+    }
+    public void check() {
+        List<Integer> a = new ArrayList<>((Collection) guessedCombination.values());
+        List<Integer> b = new ArrayList<>((Collection) combination.values());
+        List<Integer> c= new ArrayList<>();
+        Map<Integer,Integer> tempa= new HashMap<>(combination);
+        int p = cardPosition -3;
+        int status =0;
+        if(guessedTrue == 0 &&(turn ==3 || turn ==1))
+        {
+
+           for (int i =0;i < 4;i++)
+           {
+               if(a.get(i) == b.get(i))
+               {
+                    c.add(i);
+                    ++status;
+                   addToBall(p+i,1);
+               }
+           }
+            for (int i =0;i < c.size();i++)
+            {
+                tempa.remove(c.get(i));
+                a.remove(c.get(i));
+                b.remove(c.get(i));
+
+            }
+
+            if(status == 4)
+            {
+                guessedTrue = 1;
+                switch (cardPosition/4)
+                {
+                    case 1: case 2: rScore= String.valueOf(Integer.valueOf(rScore)+20);break;
+                    case 3: case 4:rScore= String.valueOf(Integer.valueOf(rScore)+15);break;
+                    case 5: case 6:rScore= String.valueOf(Integer.valueOf(rScore)+10);break;
+                }
+                TextView field1 = (TextView) findViewById(R.id.redPlayerScore);
+                field1.setText(rScore);
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        timera.cancel();
+                        Intent intent = new Intent(getApplicationContext(), StepByStepGame.class);
+                        intent.putExtra("rName", rName);
+                        intent.putExtra("bName", bName);
+                        intent.putExtra("rScore", rScore);
+                        intent.putExtra("bScore", bScore);
+                        if (turn == 3) {
+                            intent.putExtra("solo", 1);
+                        } else {
+                            intent.putExtra("solo", 0);
+                        }
+                        intent.putExtra("round", 0);
+
+                        startActivity(intent);
+                        finish();
+                    }
+                }, 2000);
+
+            }
+        }
+//        if(guessedTrue == 0 &&(turn ==3 || turn ==1))
+//        {
+//
+//            for (int i =0;i <combination.keySet().size() ;i++)
+//            {
+//                if(a.get(i) == b.get(i))
+//                {
+//                    tempa.remove(i+1);
+//                }
+//            }
+//        }
+
+    allSubmited = 0;
+    posetion = 1;
+    }
+    public void addToBall(int pos,int color) {
+
+        String a = "guessingBall";
+
+        String temp = a + String.valueOf(pos);
+        int id = 1;
+        switch (temp) {
+            case "guessingBall1":
+                id = R.id.guessingBall1;
+                break;
+            case "guessingBall2":
+                id = R.id.guessingBall2;
+                break;
+            case "guessingBall3":
+                id = R.id.guessingBall3;
+                break;
+            case "guessingBall4":
+                id = R.id.guessingBall4;
+                break;
+            case "guessingBall5":
+                id = R.id.guessingBall5;
+                break;
+            case "guessingBall6":
+                id = R.id.guessingBall6;
+                break;
+            case "guessingBall7":
+                id = R.id.guessingBall7;
+                break;
+            case "guessingBall8":
+                id = R.id.guessingBall8;
+                break;
+            case "guessingBall9":
+                id = R.id.guessingBall9;
+                break;
+            case "guessingBall10":
+                id = R.id.guessingBall10;
+                break;
+            case "guessingBall11":
+                id = R.id.guessingBall11;
+                break;
+            case "guessingBall12":
+                id = R.id.guessingBall12;
+                break;
+            case "guessingBall13":
+                id = R.id.guessingBall13;
+                break;
+            case "guessingBall14":
+                id = R.id.guessingBall14;
+                break;
+            case "guessingBall15":
+                id = R.id.guessingBall15;
+                break;
+            case "guessingBall16":
+                id = R.id.guessingBall16;
+                break;
+            case "guessingBall17":
+                id = R.id.guessingBall17;
+                break;
+            case "guessingBall18":
+                id = R.id.guessingBall18;
+                break;
+            case "guessingBall19":
+                id = R.id.guessingBall19;
+                break;
+            case "guessingBall20":
+                id = R.id.guessingBall20;
+                break;
+            case "guessingBall21":
+                id = R.id.guessingBall21;
+                break;
+            case "guessingBall22":
+                id = R.id.guessingBall22;
+                break;
+            case "guessingBall23":
+                id = R.id.guessingBall23;
+                break;
+            case "guessingBall24":
+                id = R.id.guessingBall24;
+                break;
+
+        }
+        LinearLayout im = (LinearLayout) findViewById(id);
+        int idd;
+        int redColorValue = Color.RED;
+        int u = Color.YELLOW;
+        switch (color) {
+            case 1:
+
+               im.setBackgroundTintList(ColorStateList.valueOf(Color.RED));break;
+            case 2:
+                im.setBackgroundTintList(ColorStateList.valueOf(Color.YELLOW));break;
+
+        }
+
+    }
+
+    public void addToUI(int pos) {
+        String a = "guessingCard";
+        String temp = a + String.valueOf(cardPosition);
+        int id = 1;
+        switch (temp) {
+            case "guessingCard1":
+                id = R.id.guessingCard1;
+                break;
+            case "guessingCard2":
+                id = R.id.guessingCard2;
+                break;
+            case "guessingCard3":
+                id = R.id.guessingCard3;
+                break;
+            case "guessingCard4":
+                id = R.id.guessingCard4;
+                break;
+            case "guessingCard5":
+                id = R.id.guessingCard5;
+                break;
+            case "guessingCard6":
+                id = R.id.guessingCard6;
+                break;
+            case "guessingCard7":
+                id = R.id.guessingCard7;
+                break;
+            case "guessingCard8":
+                id = R.id.guessingCard8;
+                break;
+            case "guessingCard9":
+                id = R.id.guessingCard9;
+                break;
+            case "guessingCard10":
+                id = R.id.guessingCard10;
+                break;
+            case "guessingCard11":
+                id = R.id.guessingCard11;
+                break;
+            case "guessingCard12":
+                id = R.id.guessingCard12;
+                break;
+            case "guessingCard13":
+                id = R.id.guessingCard13;
+                break;
+            case "guessingCard14":
+                id = R.id.guessingCard14;
+                break;
+            case "guessingCard15":
+                id = R.id.guessingCard15;
+                break;
+            case "guessingCard16":
+                id = R.id.guessingCard16;
+                break;
+            case "guessingCard17":
+                id = R.id.guessingCard17;
+                break;
+            case "guessingCard18":
+                id = R.id.guessingCard18;
+                break;
+            case "guessingCard19":
+                id = R.id.guessingCard19;
+                break;
+            case "guessingCard20":
+                id = R.id.guessingCard20;
+                break;
+            case "guessingCard21":
+                id = R.id.guessingCard21;
+                break;
+            case "guessingCard22":
+                id = R.id.guessingCard22;
+                break;
+            case "guessingCard23":
+                id = R.id.guessingCard23;
+                break;
+            case "guessingCard24":
+                ab=1;
+                id = R.id.guessingCard24;
+                break;
+
+        }
+                ImageView im = (ImageView) findViewById(id);
+                int idd;
+                switch (pos) {
+                    case 1:
+                        im.setBackground(s1.getBackground());break;
+                    case 2:
+                        im.setBackground(s2.getBackground());break;
+                    case 3:
+                        im.setBackground(s3.getBackground());break;
+                    case 4:
+                        im.setBackground(s4.getBackground());break;
+                    case 5:
+                        im.setBackground(s5.getBackground());break;
+                    case 6:
+                        im.setBackground(s6.getBackground());break;
+                }
+
+        }
+
+
+    }
