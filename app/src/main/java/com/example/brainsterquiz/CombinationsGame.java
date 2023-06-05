@@ -113,7 +113,7 @@ public class CombinationsGame extends AppCompatActivity {
         }
         this.rName1.setText(rName);
         this.bName1.setText(bName);
-        timera=    new CountDownTimer(60000, 1000) {
+        timera=    new CountDownTimer(6000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 timer.setText("" + millisUntilFinished / 1000);
@@ -122,6 +122,56 @@ public class CombinationsGame extends AppCompatActivity {
             public void onFinish() {
                 timer.setText("done!");
                 timer.setText("done!");
+                for (int i =1;i<combination.values().size()+1;i++
+                ) {
+                    int id =0;
+                    switch (i) {
+                        case 1:
+                            id = R.id.guessingCard25;
+                            break;
+                        case 2:
+                            id = R.id.guessingCard26;
+                            break;
+                        case 3:
+                            id = R.id.guessingCard27;
+                            break;
+                        case 4:
+                            id = R.id.guessingCard28;
+                            break;
+                    }
+                    LinearLayout im = (LinearLayout) findViewById(id);
+                    int bas=0;
+                    switch (i) {
+                        case 1:
+                            bas = combination.get(1);
+                            break;
+                        case 2:
+                            bas = combination.get(2);
+                            break;
+                        case 3:
+                            bas = combination.get(3);
+                            break;
+                        case 4:
+                            bas = combination.get(4);
+                            break;
+                    }
+                    switch (bas) {
+                        case 1:
+                            im.setBackground(s1.getBackground());break;
+                        case 2:
+                            im.setBackground(s2.getBackground());break;
+                        case 3:
+                            im.setBackground(s3.getBackground());break;
+                        case 4:
+                            im.setBackground(s4.getBackground());break;
+                        case 5:
+                            im.setBackground(s5.getBackground());break;
+                        case 6:
+                            im.setBackground(s6.getBackground());break;
+                    }
+
+
+                }
                 if(round == 1  && turn != 3)
                 {
                     Intent intent = new Intent(getApplicationContext(), StepByStepGame.class);
@@ -141,6 +191,7 @@ public class CombinationsGame extends AppCompatActivity {
 
                 }if(round == 0 && turn == 3)
                 {
+
                     Intent intent = new Intent(getApplicationContext(), StepByStepGame.class);
                     intent.putExtra("rName", rName);
                     intent.putExtra("bName", bName);
@@ -306,11 +357,62 @@ public class CombinationsGame extends AppCompatActivity {
 
        if(ab==1){
            guessedTrue=1;
+           for (int i =1;i<combination.values().size()+1;i++
+           ) {
+               int id =0;
+               switch (i) {
+                   case 1:
+                       id = R.id.guessingCard25;
+                       break;
+                   case 2:
+                       id = R.id.guessingCard26;
+                       break;
+                   case 3:
+                       id = R.id.guessingCard27;
+                       break;
+                   case 4:
+                       id = R.id.guessingCard28;
+                       break;
+               }
+               LinearLayout im = (LinearLayout) findViewById(id);
+               int bas=0;
+               switch (i) {
+                   case 1:
+                       bas = combination.get(1);
+                       break;
+                   case 2:
+                       bas = combination.get(2);
+                       break;
+                   case 3:
+                       bas = combination.get(3);
+                       break;
+                   case 4:
+                       bas = combination.get(4);
+                       break;
+               }
+               switch (bas) {
+                   case 1:
+                       im.setBackground(s1.getBackground());break;
+                   case 2:
+                       im.setBackground(s2.getBackground());break;
+                   case 3:
+                       im.setBackground(s3.getBackground());break;
+                   case 4:
+                       im.setBackground(s4.getBackground());break;
+                   case 5:
+                       im.setBackground(s5.getBackground());break;
+                   case 6:
+                       im.setBackground(s6.getBackground());break;
+               }
+
+
+           }
            Handler handler = new Handler();
            handler.postDelayed(new Runnable() {
                @Override
                public void run() {
                    timera.cancel();
+
                    Intent intent = new Intent(getApplicationContext(), StepByStepGame.class);
                    intent.putExtra("rName", rName);
                    intent.putExtra("bName", bName);
@@ -326,7 +428,7 @@ public class CombinationsGame extends AppCompatActivity {
                    startActivity(intent);
                    finish();
                }
-           }, 2000);
+           }, 5000);
        }
     }
     public void check() {
@@ -343,18 +445,13 @@ public class CombinationsGame extends AppCompatActivity {
            {
                if(a.get(i) == b.get(i))
                {
-                    c.add(i);
+                    a.set(i,0);
+                   b.set(i,0);
                     ++status;
                    addToBall(p+i,1);
                }
            }
-            for (int i =0;i < c.size();i++)
-            {
-                tempa.remove(c.get(i));
-                a.remove(c.get(i));
-                b.remove(c.get(i));
 
-            }
 
             if(status == 4)
             {
@@ -367,11 +464,62 @@ public class CombinationsGame extends AppCompatActivity {
                 }
                 TextView field1 = (TextView) findViewById(R.id.redPlayerScore);
                 field1.setText(rScore);
+                for (int i =1;i<combination.values().size()+1;i++
+                ) {
+                    int id =0;
+                    switch (i) {
+                        case 1:
+                            id = R.id.guessingCard25;
+                            break;
+                        case 2:
+                            id = R.id.guessingCard26;
+                            break;
+                        case 3:
+                            id = R.id.guessingCard27;
+                            break;
+                        case 4:
+                            id = R.id.guessingCard28;
+                            break;
+                    }
+                    LinearLayout im = (LinearLayout) findViewById(id);
+                    int bas=0;
+                    switch (i) {
+                        case 1:
+                            bas = combination.get(1);
+                            break;
+                        case 2:
+                            bas = combination.get(2);
+                            break;
+                        case 3:
+                            bas = combination.get(3);
+                            break;
+                        case 4:
+                            bas = combination.get(4);
+                            break;
+                    }
+                    switch (bas) {
+                        case 1:
+                            im.setBackground(s1.getBackground());break;
+                        case 2:
+                            im.setBackground(s2.getBackground());break;
+                        case 3:
+                            im.setBackground(s3.getBackground());break;
+                        case 4:
+                            im.setBackground(s4.getBackground());break;
+                        case 5:
+                            im.setBackground(s5.getBackground());break;
+                        case 6:
+                            im.setBackground(s6.getBackground());break;
+                    }
+
+
+                }
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         timera.cancel();
+
                         Intent intent = new Intent(getApplicationContext(), StepByStepGame.class);
                         intent.putExtra("rName", rName);
                         intent.putExtra("bName", bName);
@@ -387,21 +535,34 @@ public class CombinationsGame extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     }
-                }, 2000);
+                }, 5000);
 
             }
         }
-//        if(guessedTrue == 0 &&(turn ==3 || turn ==1))
-//        {
-//
-//            for (int i =0;i <combination.keySet().size() ;i++)
-//            {
-//                if(a.get(i) == b.get(i))
-//                {
-//                    tempa.remove(i+1);
-//                }
-//            }
-//        }
+        if(guessedTrue == 0 &&(turn ==3 || turn ==1))
+        {
+            List<Integer> zz = new ArrayList<>((Collection) b);
+            List<Integer> za = new ArrayList<>((Collection) a);
+            List<Integer> baa = new ArrayList<>((Collection) combination.values());
+            
+            for (int t =0;t <zz.size() ;t++)
+            {
+                for (int j =0;j <za.size() ;j++)
+                {
+                    if(zz.get(t)== za.get(j) && zz.get(t)!=0 &&za.get(j) != 0)
+                    {
+                        int o = za.indexOf(za.get(j));
+                        int v = zz.indexOf(zz.get(t));
+                        za.set(o,0);
+                        zz.set(v,0);
+
+                        addToBall(p+v,2);
+                        j=5;
+
+                    }
+                }
+            }
+        }
 
     allSubmited = 0;
     posetion = 1;

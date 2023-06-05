@@ -1138,7 +1138,7 @@
 
                         <LinearLayout
                             android:id="@+id/guessingCard27"
-                            android:layout_width="45dp"
+                            android:layout_width="50dp"
                             android:layout_height="match_parent"
                             android:layout_marginRight="2dp"
                             android:background="@drawable/input_field"
