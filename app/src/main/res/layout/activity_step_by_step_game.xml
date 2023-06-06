@@ -621,8 +621,6 @@
                     android:singleLine="true"
                     android:lines="1"
                     android:textColor="#011A40"
-                    android:clickable="true"
-                    android:onClick="tryGuess"
                     android:fontFamily="@font/quiz_font"
                     android:textColorHint="#757575"
                     android:gravity="center">

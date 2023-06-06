@@ -63,8 +63,7 @@ public class NumberGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_game);
         getSupportActionBar().hide();
-<<<<<<< Updated upstream
-=======
+
 
         db = FirebaseFirestore.getInstance();
 
@@ -164,7 +163,7 @@ public class NumberGame extends AppCompatActivity {
             }
         }.start();
 
->>>>>>> Stashed changes
+
     }
 
 

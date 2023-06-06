@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -77,7 +78,8 @@ public class StepByStepGame extends AppCompatActivity {
         setContentView(R.layout.activity_step_by_step_game);
         getSupportActionBar().hide();
         this.turn = 3;
-        this.stepsRevealed = 0;
+        this.stepsRevealed = 1;
+        openStep(1);
         this.rName = "Guest";
         this.bName = "";
         this.bScore = "";
@@ -162,28 +164,7 @@ public class StepByStepGame extends AppCompatActivity {
             }
         }.start();
 
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                timera.cancel();
 
-                Intent intent = new Intent(getApplicationContext(), StepByStepGame.class);
-                intent.putExtra("rName", rName);
-                intent.putExtra("bName", bName);
-                intent.putExtra("rScore", rScore);
-                intent.putExtra("bScore", bScore);
-                if (turn == 3) {
-                    intent.putExtra("solo", 1);
-                } else {
-                    intent.putExtra("solo", 0);
-                }
-                intent.putExtra("round", 0);
-
-                startActivity(intent);
-                finish();
-            }
-        }, 5000);
     }
     public void setupUI() {
         this.sentence1 = (TextView) findViewById(R.id.sentence1);
@@ -257,47 +238,42 @@ public class StepByStepGame extends AppCompatActivity {
         }
     }
 
-    public void openStep(View v) {
-        if((turn == 1 || turn == 3) && opened == 0) {
-            String sentenceID = "";
-            int idCase = v.getId();
-            switch (idCase) {
-                case R.id.sentence1:
-                    sentenceID = "sentence1";
-                    stepsRevealed = 1;
+    public void openStep(int a) {
+        int id =1;
+        if(turn == 1 || turn == 3) {
+            String sentenceID = "sentence" +a;
+
+            switch (sentenceID) {
+                case "sentence1":
+                    id =R.id.sentence1;
                     break;
-                case R.id.sentence2:
-                    sentenceID = "sentence2";
-                    stepsRevealed = 2;
+                case "sentence2":
+                    id =R.id.sentence2;
                     break;
-                case R.id.sentence3:
-                    sentenceID = "sentence3";
-                    stepsRevealed = 3;
+                case "sentence3":
+                    id =R.id.sentence3;
                     break;
-                case R.id.sentence4:
-                    sentenceID = "sentence4";
-                    stepsRevealed = 4;
+                case "sentence4":
+                    id =R.id.sentence4;
                     break;
-                case R.id.sentence5:
-                    sentenceID = "sentence5";
-                    stepsRevealed = 5;
+                case "sentence5":
+                    id =R.id.sentence5;
                     break;
-                case R.id.sentence6:
-                    sentenceID = "sentence6";
-                    stepsRevealed = 6;
+                case "sentence6":
+                    id =R.id.sentence6;
                     break;
-                case R.id.sentence7:
-                    sentenceID = "sentence7";
-                    stepsRevealed = 7;
+                case "sentence7":
+                    id =R.id.sentence7;
                     break;
             }
 
             String neededSentenceID = sentenceID;
+            int finalId = id;
             db.collection("/games/Step by step/1").document(round + "").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                     String value = documentSnapshot.getString(neededSentenceID);
-                    TextView field = (TextView) findViewById(v.getId());
+                    TextView field = (TextView) findViewById(finalId);
                     field.setText(value);
                     opened = 1;
                 }
@@ -305,28 +281,24 @@ public class StepByStepGame extends AppCompatActivity {
         }
     }
 
-    public void guessAnswer(View view) {
-        if ((turn == 1 || turn == 3) && stepsRevealed == 1) {
-            AlertDialog.Builder alert = new AlertDialog.Builder(this);
-            alert.setTitle("Enter Answer");
+    public void guessAnswer(View v) {
+        if (turn == 1 || turn == 3) {
 
-            final EditText input = new EditText(this);
-            alert.setView(input);
 
-            alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    if(stepsRevealed == 7){
-                        opened = 1;
-                    }
+
+             EditText input = (EditText) findViewById(R.id.answerInput);
+
+
+
                     String guess = String.valueOf(input.getText());
-                    opened = 0;
+
 
                     String finalID = "answer";
                     db.collection("/games/Step by step/1").document(round + "").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                         @Override
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
                             if(guess.equals(documentSnapshot.getString(finalID))) {
+                                Toast.makeText(getApplicationContext(),"Success Guess",Toast.LENGTH_SHORT).show();
                                 int result = 0;
                                 if (stepsRevealed == 1){
                                     result = 20;
@@ -355,7 +327,7 @@ public class StepByStepGame extends AppCompatActivity {
                                 if(stepsRevealed == 7) {
                                     result = 8;
                                 }
-                                rScore = String.valueOf(Integer.valueOf(rScore + result));
+                                rScore = String.valueOf(Integer.valueOf(rScore)+result);
                                 TextView field1 = (TextView) findViewById(R.id.redPlayerScore);
                                 field1.setText(rScore);
 
@@ -382,43 +354,93 @@ public class StepByStepGame extends AppCompatActivity {
 
                                 EditText answer = (EditText) findViewById(R.id.answerInput);
                                 answer.setText(documentSnapshot.getString("answer"));
-
                                 Handler handler = new Handler();
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        timera.cancel();
+                                        if(round == 1 && turn !=3)
+                                        {
 
-                                        Intent intent = new Intent(getApplicationContext(), NumberGame.class);
-                                        intent.putExtra("rName", rName);
-                                        intent.putExtra("bName", bName);
-                                        intent.putExtra("rScore", rScore);
-                                        intent.putExtra("bScore", bScore);
-                                        if (turn == 3) {
-                                            intent.putExtra("solo", 1);
-                                        } else {
-                                            intent.putExtra("solo", 0);
+                                            timera.cancel();
+                                            Intent intent = new Intent(getApplicationContext(), NumberGame.class);
+                                            intent.putExtra("rName", rName);
+                                            intent.putExtra("bName", bName);
+                                            intent.putExtra("rScore", rScore);
+                                            intent.putExtra("bScore",bScore);
+                                            if(turn == 3)
+                                            {
+                                                intent.putExtra("solo", 1);
+                                            }else{
+                                                intent.putExtra("solo", 0);
+                                            }
+                                            intent.putExtra("round", 0);
+
+                                            startActivity(intent);
+                                            finish();
                                         }
-                                        intent.putExtra("round", 0);
+                                        if(round == 0 && turn !=3)
+                                        {
 
-                                        startActivity(intent);
-                                        finish();
+                                            timera.cancel();
+                                            Intent intent = new Intent(getApplicationContext(), StepByStepGame.class);
+                                            intent.putExtra("rName", rName);
+                                            intent.putExtra("bName", bName);
+                                            intent.putExtra("rScore", rScore);
+                                            intent.putExtra("bScore",bScore);
+                                            if(turn == 3)
+                                            {
+                                                intent.putExtra("solo", 1);
+                                            }else{
+                                                intent.putExtra("solo", 0);
+                                            }
+                                            intent.putExtra("round", 1);
+
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                        if(round == 0 && turn ==3)
+                                        {
+
+                                            timera.cancel();
+                                            Intent intent = new Intent(getApplicationContext(), NumberGame.class);
+                                            intent.putExtra("rName", rName);
+                                            intent.putExtra("bName", bName);
+                                            intent.putExtra("rScore", rScore);
+                                            intent.putExtra("bScore",bScore);
+                                            if(turn == 3)
+                                            {
+                                                intent.putExtra("solo", 1);
+                                            }else{
+                                                intent.putExtra("solo", 0);
+                                            }
+                                            intent.putExtra("round", 0);
+
+                                            startActivity(intent);
+
+                                        }
+
+
                                     }
-                                }, 5000);
+                                }, 2000);
+
+
+                            }
+                            else {
+                                if(stepsRevealed < 7)
+                                {
+                                    stepsRevealed=stepsRevealed+1;
+                                    openStep(stepsRevealed);
+                                }
+                                else{
+                                    Toast.makeText(getApplicationContext(),"Wrong guess",Toast.LENGTH_SHORT).show();
+                                }
+
                             }
                         }
                     });
                 }
-            });
 
-            alert.setNegativeButton("Show step", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    openStep(view);
-                }
-            });
 
-            alert.show();
+
         }
     }
-}
