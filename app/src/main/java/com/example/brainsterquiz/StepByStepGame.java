@@ -410,6 +410,15 @@ public class StepByStepGame extends AppCompatActivity {
                     });
                 }
             });
+
+            alert.setNegativeButton("Show step", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    openStep(view);
+                }
+            });
+
+            alert.show();
         }
     }
 }
