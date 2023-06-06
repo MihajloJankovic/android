@@ -666,7 +666,7 @@ public class AssociationsGame extends AppCompatActivity {
                                 }
 
 
-                                //db get string and set it to int
+                                //db get string and set it to int by Mihajlo
                             });
 
 
