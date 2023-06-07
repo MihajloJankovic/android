@@ -265,16 +265,17 @@ public class NumberGame extends AppCompatActivity {
         number5.setClickable(true);
         number6.setClickable(true);
 
-        addition.setClickable(true);
-        subtraction.setClickable(true);
-        multiplication.setClickable(true);
-        division.setClickable(true);
+        addition.setClickable(false);
+        subtraction.setClickable(false);
+        multiplication.setClickable(false);
+        division.setClickable(false);
         openBracket.setClickable(true);
         closedBracket.setClickable(true);
     }
 
     public void makeExpression(View view){
         setupUI();
+        generateNumbers(view);
 
         inputNumbers.setText("");
         String inputTxt = inputNumbers.getText().toString();
@@ -301,7 +302,6 @@ public class NumberGame extends AppCompatActivity {
                 subtraction.setClickable(false);
                 multiplication.setClickable(false);
                 division.setClickable(false);
-                openBracket.setClickable(false);
             }
         });
 
@@ -313,7 +313,6 @@ public class NumberGame extends AppCompatActivity {
                 subtraction.setClickable(false);
                 multiplication.setClickable(false);
                 division.setClickable(false);
-                openBracket.setClickable(false);
             }
         });
 
@@ -325,7 +324,6 @@ public class NumberGame extends AppCompatActivity {
                 subtraction.setClickable(false);
                 multiplication.setClickable(false);
                 division.setClickable(false);
-                openBracket.setClickable(false);
             }
         });
 
@@ -337,7 +335,6 @@ public class NumberGame extends AppCompatActivity {
                 subtraction.setClickable(false);
                 multiplication.setClickable(false);
                 division.setClickable(false);
-                openBracket.setClickable(false);
             }
         });
 
@@ -349,7 +346,6 @@ public class NumberGame extends AppCompatActivity {
                 subtraction.setClickable(false);
                 multiplication.setClickable(false);
                 division.setClickable(false);
-                openBracket.setClickable(false);
             }
         });
 
@@ -361,7 +357,6 @@ public class NumberGame extends AppCompatActivity {
                 subtraction.setClickable(false);
                 multiplication.setClickable(false);
                 division.setClickable(false);
-                openBracket.setClickable(false);
             }
         });
 
