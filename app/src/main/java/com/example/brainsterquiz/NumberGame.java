@@ -7,11 +7,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.collection.CircularArray;
 
+import android.content.Intent;
 import android.os.Bundle;
-<<<<<<< Updated upstream
-
-public class NumberGame extends AppCompatActivity {
-=======
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -19,21 +16,13 @@ import android.widget.TextView;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.time.Duration;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
 import java.util.Random;
 import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.BlockingDeque;
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.ScheduledExecutorService;
+
 
 public class NumberGame extends AppCompatActivity {
     private Timer singleDigitTimer;
@@ -86,7 +75,7 @@ public class NumberGame extends AppCompatActivity {
     CountDownTimer timera;
 
     FirebaseFirestore db;
->>>>>>> Stashed changes
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,10 +104,6 @@ public class NumberGame extends AppCompatActivity {
         lastDigits.add(50);
         lastDigits.add(100);
 
-
-<<<<<<< Updated upstream
-    }
-=======
         db = FirebaseFirestore.getInstance();
 
         this.opened = 0;
@@ -459,6 +444,4 @@ public class NumberGame extends AppCompatActivity {
             }
         });
     }
-
->>>>>>> Stashed changes
 }
