@@ -259,7 +259,7 @@ public class NumberGame extends AppCompatActivity {
 
     }
     public void generateNumbers(View view) {
-        setupUI();
+
 
         Random random = new Random();
 
@@ -300,7 +300,7 @@ public class NumberGame extends AppCompatActivity {
         setupUI();
         generateNumbers(view);
 
-        inputNumbers.setText("");
+         inputNumbers.setText("");
         String inputTxt = String.valueOf(inputNumbers);
 
         String num1Value = number1.getText().toString();
@@ -320,7 +320,7 @@ public class NumberGame extends AppCompatActivity {
         addition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                inputTxt.concat("+");
+                inputNumbers.setText(inputNumbers.getText()+"+");
                 addition.setClickable(false);
                 subtraction.setClickable(false);
                 multiplication.setClickable(false);
@@ -331,7 +331,8 @@ public class NumberGame extends AppCompatActivity {
         subtraction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                inputTxt.concat("-");
+                inputNumbers.setText(inputNumbers.getText()+"-");
+
                 addition.setClickable(false);
                 subtraction.setClickable(false);
                 multiplication.setClickable(false);
