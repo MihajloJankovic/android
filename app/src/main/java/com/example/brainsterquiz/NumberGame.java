@@ -1,28 +1,30 @@
 package com.example.brainsterquiz;
 
-import static java.util.concurrent.TimeUnit.SECONDS;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.collection.CircularArray;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
-import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.fathzer.soft.javaluator.DoubleEvaluator;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.Stack;
 import java.util.Timer;
 
 
@@ -35,12 +37,25 @@ public class NumberGame extends AppCompatActivity {
     private RelativeLayout clearInput;
     TextView confirmTxt;
     TextView inputNumbers;
+
+    LinearLayout confirmButton;
     TextView number1;
     TextView number2;
     TextView number3;
     TextView number4;
     TextView number5;
     TextView number6;
+    List<TextView> numbers;
+    LinearLayout number1Layout;
+    LinearLayout number2Layout;
+    LinearLayout number3Layout;
+    LinearLayout number4Layout;
+    LinearLayout number5Layout;
+    LinearLayout number6Layout;
+    LinearLayout additionLayout;
+    LinearLayout substractionLayout;
+    LinearLayout multiplicationLayout;
+    LinearLayout divisionLayout;
 
     private TextView timer;
     private int turn;
@@ -58,6 +73,8 @@ public class NumberGame extends AppCompatActivity {
     TextView multiplication;
     TextView division;
 
+    LinearLayout openBracketLayout;
+    LinearLayout closedBracketLayout;
     TextView openBracket;
     TextView closedBracket;
     private TextView bName1;
@@ -127,6 +144,15 @@ public class NumberGame extends AppCompatActivity {
         lastDigits.add(100);
 
         db = FirebaseFirestore.getInstance();
+
+        numbers = new ArrayList<TextView>();
+
+        numbers.add(number1);
+        numbers.add(number2);
+        numbers.add(number3);
+        numbers.add(number4);
+        numbers.add(number5);
+        numbers.add(number6);
 
         this.opened = 0;
         this.turn = 3;
@@ -242,7 +268,7 @@ public class NumberGame extends AppCompatActivity {
         this.number6 = (TextView) findViewById(R.id.number6);
         this.addition = (TextView) findViewById(R.id.addition);
         this.subtraction = (TextView) findViewById(R.id.subtraction);
-        this.multiplication = (TextView) findViewById(R.id.subtraction);
+        this.multiplication = (TextView) findViewById(R.id.multiplication);
         this.division =(TextView) findViewById(R.id.division);
         this.openBracket = (TextView) findViewById(R.id.openBracket);
         this.closedBracket = (TextView) findViewById(R.id.closedBracket);
@@ -256,6 +282,19 @@ public class NumberGame extends AppCompatActivity {
         this.bScore1.setText(bScore);
         this.rName1.setText(rName);
         this.bName1.setText(bName);
+        this.openBracketLayout = (LinearLayout) findViewById(R.id.openBracketLayout);
+        this.closedBracketLayout = (LinearLayout) findViewById(R.id.closedBracketLayout);
+        this.number1Layout = (LinearLayout) findViewById(R.id.number1Layout);
+        this.number2Layout = (LinearLayout) findViewById(R.id.number2Layout);
+        this.number3Layout = (LinearLayout) findViewById(R.id.number3Layout);
+        this.number4Layout = (LinearLayout) findViewById(R.id.number4Layout);
+        this.number5Layout = (LinearLayout) findViewById(R.id.number5Layout);
+        this.number6Layout = (LinearLayout) findViewById(R.id.number6Layout);
+        this.additionLayout = (LinearLayout) findViewById(R.id.additionLayout);
+        this.substractionLayout = (LinearLayout) findViewById(R.id.subtractionLayout);
+        this.multiplicationLayout = (LinearLayout) findViewById(R.id.multiplicationLayout);
+        this.divisionLayout = (LinearLayout) findViewById(R.id.divisionLayout);
+        this.confirmButton = (LinearLayout) findViewById(R.id.confirmButtonMainLayout);
 
     }
     public void generateNumbers(View view) {
@@ -297,34 +336,57 @@ public class NumberGame extends AppCompatActivity {
     }
 
     public void makeExpression(View view){
-        setupUI();
         generateNumbers(view);
-
-         inputNumbers.setText("");
-        String inputTxt = String.valueOf(inputNumbers);
-
-        String num1Value = number1.getText().toString();
-        String num2Value = number2.getText().toString();
-        String num3Value = number3.getText().toString();
-        String num4Value = number4.getText().toString();
-        String num5Value = number5.getText().toString();
-        String num6Value = number6.getText().toString();
-
+        inputNumbers.setText("");
         clearInput.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 inputNumbers.setText("");
+                number1.setClickable(true);
+                number2.setClickable(true);
+                number3.setClickable(true);
+                number4.setClickable(true);
+                number5.setClickable(true);
+                number6.setClickable(true);
+
+                addition.setClickable(false);
+                subtraction.setClickable(false);
+                multiplication.setClickable(false);
+                division.setClickable(false);
+                openBracket.setClickable(true);
+                closedBracket.setClickable(true);
+
+                number1Layout.setBackgroundResource(R.drawable.numbers_clicked);
+                number2Layout.setBackgroundResource(R.drawable.numbers_clicked);
+                number3Layout.setBackgroundResource(R.drawable.numbers_clicked);
+                number4Layout.setBackgroundResource(R.drawable.numbers_clicked);
+                number5Layout.setBackgroundResource(R.drawable.numbers_clicked);
+                number6Layout.setBackgroundResource(R.drawable.numbers_clicked);
+
+                number1Layout.setClickable(true);
+                number2Layout.setClickable(true);
+                number3Layout.setClickable(true);
+                number4Layout.setClickable(true);
+                number5Layout.setClickable(true);
+                number6Layout.setClickable(true);
             }
         });
 
         addition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                inputNumbers.setText(inputNumbers.getText()+"+");
+                inputNumbers.setText(inputNumbers.getText() + "+");
                 addition.setClickable(false);
                 subtraction.setClickable(false);
                 multiplication.setClickable(false);
                 division.setClickable(false);
+
+                number1.setClickable(true);
+                number2.setClickable(true);
+                number3.setClickable(true);
+                number4.setClickable(true);
+                number5.setClickable(true);
+                number6.setClickable(true);
             }
         });
 
@@ -332,56 +394,90 @@ public class NumberGame extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 inputNumbers.setText(inputNumbers.getText()+"-");
-
                 addition.setClickable(false);
                 subtraction.setClickable(false);
                 multiplication.setClickable(false);
                 division.setClickable(false);
-                inputNumbers.setText(inputTxt);
+
+                number1.setClickable(true);
+                number2.setClickable(true);
+                number3.setClickable(true);
+                number4.setClickable(true);
+                number5.setClickable(true);
+                number6.setClickable(true);
+
             }
         });
 
         multiplication.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                inputTxt.concat("×");
+                inputNumbers.setText(inputNumbers.getText()+"*");
                 addition.setClickable(false);
                 subtraction.setClickable(false);
                 multiplication.setClickable(false);
                 division.setClickable(false);
+
+                number1.setClickable(true);
+                number2.setClickable(true);
+                number3.setClickable(true);
+                number4.setClickable(true);
+                number5.setClickable(true);
+                number6.setClickable(true);
             }
         });
 
         division.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                inputTxt.concat("/");
+                inputNumbers.setText(inputNumbers.getText()+"/");
                 addition.setClickable(false);
                 subtraction.setClickable(false);
                 multiplication.setClickable(false);
                 division.setClickable(false);
+
+                number1.setClickable(true);
+                number2.setClickable(true);
+                number3.setClickable(true);
+                number4.setClickable(true);
+                number5.setClickable(true);
+                number6.setClickable(true);
             }
         });
 
         openBracket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                inputTxt.concat("(");
-                addition.setClickable(false);
-                subtraction.setClickable(false);
-                multiplication.setClickable(false);
-                division.setClickable(false);
+                inputNumbers.setText(inputNumbers.getText()+"(");
+                addition.setClickable(true);
+                subtraction.setClickable(true);
+                multiplication.setClickable(true);
+                division.setClickable(true);
+
+                number1.setClickable(true);
+                number2.setClickable(true);
+                number3.setClickable(true);
+                number4.setClickable(true);
+                number5.setClickable(true);
+                number6.setClickable(true);
             }
         });
 
         closedBracket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                inputTxt.concat(")");
-                addition.setClickable(false);
-                subtraction.setClickable(false);
-                multiplication.setClickable(false);
-                division.setClickable(false);
+                inputNumbers.setText(inputNumbers.getText()+")");
+                addition.setClickable(true);
+                subtraction.setClickable(true);
+                multiplication.setClickable(true);
+                division.setClickable(true);
+
+                number1.setClickable(true);
+                number2.setClickable(true);
+                number3.setClickable(true);
+                number4.setClickable(true);
+                number5.setClickable(true);
+                number6.setClickable(true);
             }
         });
 
@@ -389,199 +485,175 @@ public class NumberGame extends AppCompatActivity {
         number1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                inputTxt.concat(String.valueOf(number1));
+                inputNumbers.setText(inputNumbers.getText()+String.valueOf(number1.getText()));
                 number1.setClickable(false);
                 number2.setClickable(false);
                 number3.setClickable(false);
                 number4.setClickable(false);
                 number5.setClickable(false);
                 number6.setClickable(false);
+
+                addition.setClickable(true);
+                subtraction.setClickable(true);
+                multiplication.setClickable(true);
+                division.setClickable(true);
+
+                number1Layout.setBackgroundColor(Color.GRAY);
+                number1Layout.setClickable(false);
             }
         });
 
         number2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                inputTxt.concat(String.valueOf(number2));
+                inputNumbers.setText(inputNumbers.getText()+String.valueOf(number2.getText()));
                 number1.setClickable(false);
                 number2.setClickable(false);
                 number3.setClickable(false);
                 number4.setClickable(false);
                 number5.setClickable(false);
                 number6.setClickable(false);
+
+                addition.setClickable(true);
+                subtraction.setClickable(true);
+                multiplication.setClickable(true);
+                division.setClickable(true);
+
+                number2Layout.setBackgroundColor(Color.GRAY);
+                number2Layout.setClickable(false);
             }
         });
 
         number3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                inputTxt.concat(String.valueOf(number3));
+                inputNumbers.setText(inputNumbers.getText()+String.valueOf(number3.getText()));
                 number1.setClickable(false);
                 number2.setClickable(false);
                 number3.setClickable(false);
                 number4.setClickable(false);
                 number5.setClickable(false);
                 number6.setClickable(false);
+
+                addition.setClickable(true);
+                subtraction.setClickable(true);
+                multiplication.setClickable(true);
+                division.setClickable(true);
+
+                number3Layout.setBackgroundColor(Color.GRAY);
+                number3Layout.setClickable(false);
             }
         });
 
         number4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                inputTxt.concat(String.valueOf(number4));
+                inputNumbers.setText(inputNumbers.getText()+String.valueOf(number4.getText()));
                 number1.setClickable(false);
                 number2.setClickable(false);
                 number3.setClickable(false);
                 number4.setClickable(false);
                 number5.setClickable(false);
                 number6.setClickable(false);
+
+                addition.setClickable(true);
+                subtraction.setClickable(true);
+                multiplication.setClickable(true);
+                division.setClickable(true);
+
+                number4Layout.setBackgroundColor(Color.GRAY);
+                number4Layout.setClickable(false);
             }
         });
 
         number5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                inputTxt.concat(String.valueOf(number5));
+                inputNumbers.setText(inputNumbers.getText()+String.valueOf(number5.getText()));
                 number1.setClickable(false);
                 number2.setClickable(false);
                 number3.setClickable(false);
                 number4.setClickable(false);
                 number5.setClickable(false);
                 number6.setClickable(false);
+
+                addition.setClickable(true);
+                subtraction.setClickable(true);
+                multiplication.setClickable(true);
+                division.setClickable(true);
+
+                number5Layout.setBackgroundColor(Color.GRAY);
+                number5Layout.setClickable(false);
             }
         });
 
         number6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                inputTxt.concat(String.valueOf(number6));
+                inputNumbers.setText(inputNumbers.getText()+String.valueOf(number6.getText()));
                 number1.setClickable(false);
                 number2.setClickable(false);
                 number3.setClickable(false);
                 number4.setClickable(false);
                 number5.setClickable(false);
                 number6.setClickable(false);
+
+                addition.setClickable(true);
+                subtraction.setClickable(true);
+                multiplication.setClickable(true);
+                division.setClickable(true);
+
+                number6Layout.setBackgroundColor(Color.GRAY);
+                number6Layout.setClickable(false);
             }
         });
-    }
-//    public void changeEval() {
-//        setupUI();
-//        Stack<String> forEvalString = new Stack<>();
-//        for (TextView button : allButtons) {
-//            eval.append(button.getText().toString());
-//            forEvalString.push(button.getText().toString());
-//        }
-//        inputNumbers.setText(eval.toString());
-//        Integer result = this.resultOfEvaluation(forEvalString);
-//        redPlayerNumber.setText(String.valueOf(result));
-//    }
 
-//    public Integer resultOfEvaluation(Stack<String> expressionToEvaluate) {
-//        Integer finalResult = 0;
-//        try {
-//            Stack<String> transformedExpression = polishNotation(expressionToEvaluate);
-//            Stack<Double> result = new Stack<>();
-//            for (int i = 0; i < transformedExpression.size(); i++) {
-//                String expression = transformedExpression.get(i);
-//                if (expression.equals("*") || expression.equals("/") || expression.equals("+") || expression.equals("-")) {
-//                    double number1 = result.pop();
-//                    double number2 = result.pop();
-//                    if (expression.equals("*")) {
-//                        result.push(number1 * number2);
-//                    }
-//                    if (expression.equals("/")) {
-//                        result.push(number2 / number1);
-//                    }
-//                    if (expression.equals("-")) {
-//                        result.push(number2 - number1);
-//                    }
-//                    if (expression.equals("+")) {
-//                        result.push(number1 + number2);
-//                    }
-//                } else {
-//                    double number = Double.valueOf(transformedExpression.get(i));
-//                    result.push(number);
-//                }
-//            }
-//
-//            Double resultReturn = result.peek();
-//            if (Math.ceil(resultReturn) - Math.floor(resultReturn) > 0) {
-//                finalResult = 0;
-//            } else {
-//                finalResult = resultReturn.intValue();
-//            }
-//        } catch (Exception e) {
-//            finalResult = 0;
-//        }
-//
-//        return finalResult;
-//    }
-//
-//    private Stack<String> polishNotation(Stack<String> expression) {
-//        Stack<String> operators = new Stack<>();
-//        Stack<String> ArrayList = new Stack<>();
-//        for (int i = 0; i < expression.size(); i++) {
-//            if (expression.get(i).equals("+") || expression.get(i).equals("-") || expression.get(i).equals("*") || expression.get(i).equals("/")) {
-//                if (expression.get(i).equals("+") || expression.get(i).equals("-")) {
-//                    if (!(operators.size() == 0)) {
-//                        String topOperator = operators.peek();
-//                        while (!topOperator.equals("(") && !(operators.size() == 0)) {
-//                            ArrayList.push(operators.peek());
-//                            operators.pop();
-//                            if (operators.size() == 0) {
-//                                topOperator = "dummyString";
-//                            } else {
-//                                topOperator = operators.peek();
-//                            }
-//                        }
-//                        operators.push(expression.get(i));
-//                    } else {
-//                        operators.push(expression.get(i));
-//                    }
-//                } else if (expression.get(i).equals("*") || expression.get(i).equals("/")) {
-//                    if (!(operators.size() == 0)) {
-//                        String topOperator = operators.peek();
-//                        while ((topOperator.equals("*") || topOperator.equals("/")) && !(operators.size() == 0)) {
-//                            ArrayList.push(operators.peek());
-//                            operators.pop();
-//                            if (operators.size() == 0) {
-//                                topOperator = "dummyString";
-//                            } else {
-//                                topOperator = operators.peek();
-//                            }
-//                        }
-//
-//                    }
-//                    operators.push(expression.get(i));
-//                }
-//
-//            } else if (expression.get(i).equals("(")) {
-//                operators.push(expression.get(i));
-//            } else if (expression.get(i).equals(")")) {
-//                if (!(operators.size() == 0)) {
-//                    String topOperator = operators.peek();
-//                    while (!topOperator.equals("(") && !(operators.size() == 0)) {
-//                        ArrayList.push(operators.peek());
-//                        operators.pop();
-//                        if (!(operators.size() == 0)) {
-//                            topOperator = operators.peek();
-//                        }
-//                    }
-//                    if (!(operators.size() == 0)) {
-//                        operators.pop();
-//                    }
-//                }
-//            } else {
-//                ArrayList.push(expression.get(i));
-//            }
-//        }
-//        while (!(operators.size() == 0)) {
-//            ArrayList.push(operators.peek());
-//            operators.pop();
-//        }
-//
-//
-//        return ArrayList;
-//
-//    }
+        if(!confirmTxt.getText().toString().equals("STOP")){
+            confirmTxt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    calculateExpression(view);
+                }
+            });
+        }
+    }
+    public void calculateExpression(View view){
+        String expression = String.valueOf(inputNumbers.getText());
+        Double result = new DoubleEvaluator().evaluate(expression);
+
+        int resultInt = result.intValue();
+
+        redPlayerNumber.setText(String.valueOf(resultInt));
+        confirmButton.setVisibility(View.GONE);
+
+        number1Layout.setVisibility(View.GONE);
+        number2Layout.setVisibility(View.GONE);
+        number3Layout.setVisibility(View.GONE);
+        number4Layout.setVisibility(View.GONE);
+        number5Layout.setVisibility(View.GONE);
+        number6Layout.setVisibility(View.GONE);
+
+        additionLayout.setVisibility(View.GONE);
+        substractionLayout.setVisibility(View.GONE);
+        multiplicationLayout.setVisibility(View.GONE);
+        divisionLayout.setVisibility(View.GONE);
+        openBracketLayout.setVisibility(View.GONE);
+        closedBracketLayout.setVisibility(View.GONE);
+        givePoints(view);
+        timera.cancel();
+    }
+
+    public void givePoints(View view) {
+        if(neededNumber.getText() == redPlayerNumber.getText()){
+            rScore =String.valueOf(Integer.valueOf(rScore) + 20);
+            TextView field1 = (TextView) findViewById(R.id.redPlayerScore);
+            field1.setText(rScore);
+
+        }
+        else{
+            rScore =String.valueOf(Integer.valueOf(rScore) + 5);
+            TextView field1 = (TextView) findViewById(R.id.redPlayerScore);
+            field1.setText(rScore);
+        }
+    }
 }

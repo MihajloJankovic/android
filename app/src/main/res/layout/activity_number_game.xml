@@ -612,7 +612,7 @@
                         android:gravity="center"
                         android:clickable="false"
                         android:text="+"
-                        android:textColor="@color/white"
+                        android:textColor="#FFFFFF"
                         android:textSize="20dp"
                         tools:ignore="TouchTargetSizeCheck"></TextView>
 
@@ -657,13 +657,11 @@
                         android:id="@+id/multiplication"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:fontFamily="@font/quiz_font"
                         android:gravity="center"
                         android:clickable="false"
-                        android:text="×"
+                        android:text="*"
                         android:textColor="@color/white"
                         android:textSize="20dp"
-                        android:textStyle="bold"
                         tools:ignore="TouchTargetSizeCheck"></TextView>
 
                 </LinearLayout>
