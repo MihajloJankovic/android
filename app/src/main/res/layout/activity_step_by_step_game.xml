@@ -608,6 +608,7 @@
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:background="@drawable/input_field"
+                android:clickable="true"
                 android:padding="5dp">
 
                 <EditText
@@ -654,6 +655,8 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/quiz_font"
                         android:gravity="center"
+                        android:clickable="true"
+                        android:onClick="guessAnswer"
                         android:text="CONFIRM"
                         android:textColor="#011A40"
                         android:textSize="17dp"></TextView>

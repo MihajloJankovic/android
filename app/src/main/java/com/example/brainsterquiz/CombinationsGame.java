@@ -113,7 +113,7 @@ public class CombinationsGame extends AppCompatActivity {
         }
         this.rName1.setText(rName);
         this.bName1.setText(bName);
-        timera=    new CountDownTimer(6000, 1000) {
+        timera=    new CountDownTimer(120000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 timer.setText("" + millisUntilFinished / 1000);
@@ -541,13 +541,13 @@ public class CombinationsGame extends AppCompatActivity {
         }
         if(guessedTrue == 0 &&(turn ==3 || turn ==1))
         {
-            List<Integer> zz = new ArrayList<>((Collection) b);
-            List<Integer> za = new ArrayList<>((Collection) a);
-            List<Integer> baa = new ArrayList<>((Collection) combination.values());
+            List<Integer> zz = new ArrayList<>((Collection) b); //final comb copy
+            List<Integer> za = new ArrayList<>((Collection) a); //your guesses copy
+            List<Integer> baa = new ArrayList<>((Collection) combination.values()); //final comb copy 2
             
-            for (int t =0;t <zz.size() ;t++)
+            for (int t =0;t < zz.size() ;t++)
             {
-                for (int j =0;j <za.size() ;j++)
+                for (int j =0;j < za.size() ;j++)
                 {
                     if(zz.get(t)== za.get(j) && zz.get(t)!=0 &&za.get(j) != 0)
                     {
